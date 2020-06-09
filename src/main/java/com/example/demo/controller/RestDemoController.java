@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,8 @@ import com.example.demo.objects.Materia;
 import com.example.demo.objects.Person;
 import com.example.demo.service.FirebaseService;
 
+
+@CrossOrigin("*")
 @RestController
 public class RestDemoController {
 	
