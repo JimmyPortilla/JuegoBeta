@@ -45,10 +45,16 @@ public class ControllerRoutes {
 		String vista="carreras";
 	
 		return vista;
-	}	
+	}
+	
+	@PostMapping("/createMateria1")
+	public String vistaCarreras2(Model model) {
+		String vista="materias";
+	
+		return vista;
+	}
 	
 
-	
 	
 	
 

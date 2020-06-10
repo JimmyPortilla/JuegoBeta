@@ -104,11 +104,11 @@ public class RestDemoController {
 		return fireBaseService.saveMateria(materia);
 	}
 	@PostMapping("/createMateria1")
-	public String postMateria1(@RequestParam(name="idCarrera") String idCarrera, 
+	public void postMateria1(@RequestParam(name="idCarrera") String idCarrera, 
 			@RequestParam(name="codigoMateria") String codigoMateria,
 			@RequestParam(name="nombre") String nombre) throws InterruptedException, ExecutionException {
 		Materia objMateria = new Materia(idCarrera, codigoMateria, nombre);
-		return fireBaseService.saveMateria(objMateria);
+		fireBaseService.saveMateria(objMateria);
 	}
 	
 	@PutMapping("/updateMateria")
