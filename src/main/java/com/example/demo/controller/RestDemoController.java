@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.objects.Area;
@@ -101,6 +102,13 @@ public class RestDemoController {
 	@PostMapping("/createMateria")
 	public String postMateria(@RequestBody Materia materia) throws InterruptedException, ExecutionException {
 		return fireBaseService.saveMateria(materia);
+	}
+	@PostMapping("/createMateria1")
+	public String postMateria1(@RequestParam(name="idCarrera") String idCarrera, 
+			@RequestParam(name="codigoMateria") String codigoMateria,
+			@RequestParam(name="nombre") String nombre) throws InterruptedException, ExecutionException {
+		Materia objMateria = new Materia(idCarrera, codigoMateria, nombre);
+		return fireBaseService.saveMateria(objMateria);
 	}
 	
 	@PutMapping("/updateMateria")

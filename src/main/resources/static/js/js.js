@@ -87,10 +87,10 @@ function cargar_materias(){
                 <td>${valor.nombre}</td>
                 <td><button class="btn btn-warning" onclick="editarUsuario('${valor.idCarrera}', '${valor.codigoMateria}', '${valor.nombre}')" >Editar</button></td>
                 <td>
-                <form action="/eliminarUsuario" method="POST">
-                    <input type="text" name="id" class="form-control" value="${valor.codigoMateria}" style="display: none;">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
+                    <form action="/deleteMateria" method="POST">
+                        <input type="text" name="id" class="form-control" value="${valor.codigoMateria}" style="display: none;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
                 </td>
             </tr>
             `
@@ -102,24 +102,32 @@ function cargar_materias(){
 
 
 $(document).ready(function(){
-    alert('jajaja');
+    //alert('jajaja');
     tabla_carreras = document.getElementById("tabla_carrera");
     cargar_carreras();
     tabla_personas = document.getElementById("tabla_persona");
     cargar_personas();
     tabla_materias = document.getElementById("tabla_materia");
     cargar_materias();
+    
 });
 
 
 function abrirModalMateria(){
     limpiar_camposNotificacion();
     $('#modal_Materia').modal('show');
-
-
 }
 
 function limpiar_camposNotificacion(){
-    document.getElementById("tipo").value = "";
-    document.getElementById("descripcion").value = "";
+    document.getElementById("cdMateria","cdCarrera","nombreM").value = "";
+}
+
+
+
+function nuevoNotificacion(){
+    limpiar_camposNotificacion();
+    $('#modal_Materia').modal('show');
+
+    var boton = document.getElementById("btnRegistrar");
+    boton.innerHTML= 'Registrar';
 }

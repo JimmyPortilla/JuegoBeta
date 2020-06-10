@@ -5,48 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
-
     <title>Gestor de Preguntas</title>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2" style="background-color: aqua;">
+            <div class="col-md-2" >
                 <div class="sidebar">
-                    <a href="/">Home</a>
+                    <a href="/">Inicio</a>
                     <a href="alumnos">Alumnos</a>
                     <a href="carreras">Carreras</a>
                     <a class="active"  href="materias">Materias</a>
                   </div>
             </div>
-            <div class="col-md-10" style="background-color: beige;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-wrapper">
-                            <div class="row">
-                                <div class="col-8">
-                                    <h1>Lista de Materias</h1>
+            <div class="col-md-10" >
+                <section>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-wrapper">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h1>Lista de Materias</h1>
+                                    </div>
+                                    <br><br>
+                                    <div class="col-4">
+                                        <button class="btn btn-success" onclick="abrirModalMateria()">Nueva Materia</button>
+                                    </div>
                                 </div>
-                                <button class="btn btn-success" onclick="abrirModalMateria()">Nueva Materia</button>
+                                
+                                <table class="table table-bordered table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>N°</th>
+                                            <th>Codigo carreras</th>
+                                            <th>Codigo materia</th>
+                                            <th>Nombre</th>
+                                            <th colspan="2">Acción</th>  
+                                        </tr>
+                                        <tbody id="tabla_materia">
+                                         
+                                        </tbody>
+                                    </thead>
+                                </table>
                             </div>
-                            <table class="table table-bordered table-striped">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>N°</th>
-                                        <th>Codigo carreras</th>
-                                        <th>Codigo materia</th>
-                                        <th>Nombre</th>
-                                    </tr>
-                                    <tbody id="tabla_materia">
-                                     
-                                    </tbody>
-                                </thead>
-                            </table>
-                        
                         </div>
-                    </div>
-
-                </div> 
+                    </div> 
+                </section>
             </div>
         </div>  
 
@@ -57,27 +61,26 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
-                <h4 class="modal-title">Notificación</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Registro</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form id="formNotificacion" action="/registrarNotificacion" method="post">
-                        <input type="text" id="_idNotificacion" name="_id" style="display: none;">
+                    <form id="formNotificacion" action="/createMateria" method="POST">
+              
                         <div class="row mt-4 mb-4">
-                            <div class="col-sm-6">
-                                <label for="tipo">Tipo</label>
+                            <div class="col-sm-12">
                                 <div class="form-group">
-                                    <select class="form-control" id="tipo" name="tipo">
-                                      
-                                    </select>
+                                    <input name="idCarrera" type="text" id="cdCarrera" placeholder="Codigo carrera" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input name="codigoMateria" type="text" id="cdMateria" placeholder="Codigo materia" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input name="nombre" type="text" id="nombreM" placeholder="Materia" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="tipo">Descripción</label>
-                                <textarea id="descripcion"  name="descripcion" rows="4"></textarea>
-                            </div>
                         </div>
-                        <button type="submit" id="btnRegistrarNotificacion" class="btn btn-success">Registrar Notificación</button>
+                        <button type="submit" id="btnRegistrar" class="btn btn-success">Registrar</button>
                     </form>
                     
                 </div>
