@@ -15,4 +15,27 @@ public class ControllerRoutes {
 		return vista;
 	}
 
+	@RequestMapping("/alumnos")
+	public String vistaAlumnos(Model model) {
+		String vista="alumnos";
+	
+		return vista;
+	}
+
+	@RequestMapping("/materias")
+	public String vistaMaterias(Model model) {
+		String vista="materias";
+	
+		return vista;
+	}
+
+	@RequestMapping("/carreras")
+	public String vistaCarreras(Model model) {
+		String vista="carreras";
+	
+		return vista;
+	}
+
+	
+
 }

@@ -110,3 +110,16 @@ $(document).ready(function(){
     tabla_materias = document.getElementById("tabla_materia");
     cargar_materias();
 });
+
+
+function abrirModalMateria(){
+    limpiar_camposNotificacion();
+    $('#modal_Materia').modal('show');
+
+
+}
+
+function limpiar_camposNotificacion(){
+    document.getElementById("tipo").value = "";
+    document.getElementById("descripcion").value = "";
+}
