@@ -12,7 +12,6 @@ import com.example.demo.objects.BancoP;
 import com.example.demo.objects.Materia;
 import com.example.demo.objects.Person;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;

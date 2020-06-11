@@ -1,14 +1,10 @@
 package com.example.demo.controller;
 
-import java.util.concurrent.ExecutionException;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.example.demo.objects.Materia;
 import com.example.demo.service.FirebaseService;
 
 
@@ -16,6 +12,7 @@ import com.example.demo.service.FirebaseService;
 
 @Controller
 public class ControllerRoutes {
+	@Autowired
 	
 	FirebaseService fireBaseService;
 	
@@ -44,6 +41,14 @@ public class ControllerRoutes {
 	public String vistaCarreras(Model model) {
 		String vista="carreras";
 	
+		return vista;
+	}
+	
+	
+	@RequestMapping("/createMateria1")
+	public String crear(Model model) {
+		String vista="materias";
+		
 		return vista;
 	}
 	
