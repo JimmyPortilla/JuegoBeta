@@ -123,11 +123,9 @@ function limpiar_camposNotificacion(){
 }
 
 
-
 function nuevoNotificacion(){
     limpiar_camposNotificacion();
     $('#modal_Materia').modal('show');
-
     var boton = document.getElementById("btnRegistrar");
     boton.innerHTML= 'Registrar';
 }

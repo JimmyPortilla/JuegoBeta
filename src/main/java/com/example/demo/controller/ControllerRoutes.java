@@ -1,10 +1,15 @@
 package com.example.demo.controller;
 
+import java.util.concurrent.ExecutionException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.objects.Materia;
 import com.example.demo.service.FirebaseService;
 
 
@@ -45,15 +50,16 @@ public class ControllerRoutes {
 	}
 	
 	
-	@RequestMapping("/createMateria1")
-	public String crear(Model model) {
-		String vista="materias";
-		
+	@PostMapping("/materias")
+	public String postMateria1(@RequestParam(name="idCarrera") String idCarrera, 
+			@RequestParam(name="codigoMateria") String codigoMateria,
+			@RequestParam(name="nombre") String nombre) throws InterruptedException, ExecutionException {
+		String vista ="materias";
+		Materia objMateria = new Materia(idCarrera, codigoMateria, nombre);
+		fireBaseService.saveMateria(objMateria);
 		return vista;
+		
 	}
-	
-	
-
 	
 	
 
