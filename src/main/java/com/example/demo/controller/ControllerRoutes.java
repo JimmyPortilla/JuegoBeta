@@ -35,12 +35,7 @@ public class ControllerRoutes {
 		return vista;
 	}
 
-	@RequestMapping("/materias")
-	public String vistaMaterias(Model model) {
-		String vista="materias";
 	
-		return vista;
-	}
 
 	@RequestMapping("/carreras")
 	public String vistaCarreras(Model model) {
@@ -49,6 +44,15 @@ public class ControllerRoutes {
 		return vista;
 	}
 	
+	
+///////////////CRUD MATERIAS RUTAS
+	
+	@RequestMapping("/materias")
+	public String vistaMaterias(Model model) {
+		String vista="materias";
+	
+		return vista;
+	}
 	
 	@PostMapping("/materias")
 	public String postMateria1(@RequestParam(name="idCarrera") String idCarrera, 
@@ -59,6 +63,25 @@ public class ControllerRoutes {
 		fireBaseService.saveMateria(objMateria);
 		return vista;
 		
+	}
+	
+	@PostMapping("/updateMateria")
+	public String updateMateria(@RequestParam(name="idCarrera") String idCarrera, 
+			@RequestParam(name="codigoMateria") String codigoMateria,
+			@RequestParam(name="nombre") String nombre)  throws InterruptedException, ExecutionException {
+		String vista="materias";
+		Materia materia = new Materia(idCarrera, codigoMateria, nombre);
+		fireBaseService.saveMateria(materia);
+		return vista;
+	}
+	
+	@PostMapping("/deleteMateria")
+	public String deleteMateria(@RequestParam(name="id", required=false) String id,
+    		Model model) throws InterruptedException, ExecutionException {
+		String vista= "materias";
+		fireBaseService.deleteMateria(id);
+		
+		return vista;
 	}
 	
 	

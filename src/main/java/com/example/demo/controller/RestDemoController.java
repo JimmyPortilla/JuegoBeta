@@ -99,13 +99,10 @@ public class RestDemoController {
 		return fireBaseService.getMateria();
 	}
 	
-	/*@PostMapping("/createMateria")
+	@PostMapping("/createMateria")
 	public String postMateria(@RequestBody Materia materia) throws InterruptedException, ExecutionException {
 		return fireBaseService.saveMateria(materia);
-	}*/
-	
-	
-
+	}
 	
 	
 	@PutMapping("/updateMateria")
@@ -127,6 +124,15 @@ public class RestDemoController {
 		return fireBaseService.getPreguntas();
 	}
 	
+	@PutMapping("/updatePregunta")
+	public String putPregunta(@RequestBody BancoP bancoP) throws InterruptedException, ExecutionException {
+		return fireBaseService.updatePreguntas(bancoP);
+	}
+	
+	@DeleteMapping("/deletePregunta")
+	public String deletePregunta(@RequestHeader String id) {
+		return fireBaseService.deletePreguntas(id);
+	}
 	
 	
 	

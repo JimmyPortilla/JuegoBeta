@@ -85,7 +85,7 @@ function cargar_materias(){
                 <td>${valor.idCarrera}</td>
                 <td>${valor.codigoMateria}</td>
                 <td>${valor.nombre}</td>
-                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.idCarrera}', '${valor.codigoMateria}', '${valor.nombre}')" >Editar</button></td>
+                <td><button class="btn btn-warning" onclick="editarMateria('${valor.idCarrera}', '${valor.codigoMateria}', '${valor.nombre}')" >Editar</button></td>
                 <td>
                     <form action="/deleteMateria" method="POST">
                         <input type="text" name="id" class="form-control" value="${valor.codigoMateria}" style="display: none;">
@@ -119,7 +119,18 @@ function abrirModalMateria(){
 }
 
 function limpiar_camposNotificacion(){
-    document.getElementById("cdMateria","cdCarrera","nombreM").value = "";
+    document.getElementById("cdMateria").value = "";
+    document.getElementById("cdCarrera").value = "";
+    document.getElementById("nombreM").value = "";
+}
+
+function editarMateria(idCarrera, codigoMateria, nombre){
+	$('#modal_Materia').modal('show');
+	document.getElementById("cdMateria").value = codigoMateria;
+    document.getElementById("cdCarrera").value = idCarrera;
+    document.getElementById("nombreM").value = nombre;
+    var boton = document.getElementById("btnRegistrar");
+    boton.innerHTML= 'Actualizar Materia';
 }
 
 

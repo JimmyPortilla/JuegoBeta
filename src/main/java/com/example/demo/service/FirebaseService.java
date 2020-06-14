@@ -157,7 +157,7 @@ public class FirebaseService {
 					}
 				   
 				   
-///////SERVICE MATERIAS
+///////SERVICE PREGUNTAS
 				   
 				public String savePreguntas(BancoP bancop) throws InterruptedException, ExecutionException {	
 						Firestore dbFirestore = FirestoreClient.getFirestore();
@@ -176,5 +176,17 @@ public class FirebaseService {
 						}
 						return returnArray;
 					}
+				 
+				  public String updatePreguntas(BancoP bancoP) throws InterruptedException, ExecutionException  {
+						Firestore dbFirestore = FirestoreClient.getFirestore();
+						ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("bancoP").document().set(bancoP);
+						return collectionsApiFuture.get().getUpdateTime().toString();
+					}
+					   
+					   public String deletePreguntas(String id) {
+							Firestore dbFirestore = FirestoreClient.getFirestore();
+							ApiFuture<WriteResult> writeResult = dbFirestore.collection("bancoP").document(id).delete();
+							return "La pregunta  " + id +" a sido eliminada";
+						}
 	
 }
