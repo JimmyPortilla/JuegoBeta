@@ -21,6 +21,13 @@ public class ControllerRoutes {
 	
 	FirebaseService fireBaseService;
 	
+	@RequestMapping("/login")
+	public String login(Model model) {
+		String vista="login";
+	
+		return vista;
+	}
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		String vista="index";

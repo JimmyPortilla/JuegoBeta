@@ -130,6 +130,8 @@ function editarMateria(idCarrera, codigoMateria, nombre){
     document.getElementById("cdCarrera").value = idCarrera;
     document.getElementById("nombreM").value = nombre;
     var boton = document.getElementById("btnRegistrar");
+    document.getElementById ( "cdMateria" ) .disabled = true;
+    
     boton.innerHTML= 'Actualizar Materia';
 }
 
@@ -138,5 +140,6 @@ function nuevoNotificacion(){
     limpiar_camposNotificacion();
     $('#modal_Materia').modal('show');
     var boton = document.getElementById("btnRegistrar");
+    document.getElementById ( "cdCarrera" ) .disabled = true;
     boton.innerHTML= 'Registrar';
 }
