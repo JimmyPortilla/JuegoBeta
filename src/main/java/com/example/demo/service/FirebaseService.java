@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.objects.Area;
 import com.example.demo.objects.Carrera;
+import com.example.demo.objects.Docente;
 import com.example.demo.objects.BancoP;
 import com.example.demo.objects.Materia;
 import com.example.demo.objects.Person;
@@ -22,6 +23,42 @@ import com.google.firebase.cloud.FirestoreClient;
 
 @Service
 public class FirebaseService {
+	
+/////SERVICE DOCENTE
+	
+	public String saveDocente(Docente docente) throws InterruptedException, ExecutionException {	
+		Firestore dbFirestore = FirestoreClient.getFirestore();
+		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("docente").document(docente.getCedula()).set(docente);
+		return collectionsApiFuture.get().getUpdateTime().toString();
+	}
+	
+	
+	public List<Docente> getDocente() throws InterruptedException, ExecutionException {
+		Firestore dbFirestore = FirestoreClient.getFirestore();
+		ArrayList<Docente> returnArray = new ArrayList();
+		ApiFuture<QuerySnapshot> future = dbFirestore.collection("docente").get();
+		// future.get() blocks on response
+		List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+		for (DocumentSnapshot document : documents) {
+			returnArray.add(document.toObject(Docente.class));
+			//System.out.println(document.getId() + " => " + document.toObject(Usuario.class));
+		}
+		return returnArray;
+	}
+	
+	public String updateDocente(Docente docente) throws InterruptedException, ExecutionException  {
+		Firestore dbFirestore = FirestoreClient.getFirestore();
+		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("docente").document().set(docente);
+		return collectionsApiFuture.get().getUpdateTime().toString();
+	}
+	
+	 
+	   
+	   public String deleteDocente(String id) {
+			Firestore dbFirestore = FirestoreClient.getFirestore();
+			ApiFuture<WriteResult> writeResult = dbFirestore.collection("docente").document(id).delete();
+			return "El usuario"+id+" a sido eliminado";
+		}
 	
 /////SERVICE PERSON
 	

@@ -1,11 +1,44 @@
-
+var tabla_docentes;
 var tabla_carreras;
 var tabla_personas;
 var tabla_materias;
 
+const url_docentes= 'https://spring-boot-juegobeta.herokuapp.com/getDocente';
 const url_personas= 'https://spring-boot-juegobeta.herokuapp.com/getPerson';
 const url_carreras= 'https://spring-boot-juegobeta.herokuapp.com/getCarrera';
 const url_materias= 'https://spring-boot-juegobeta.herokuapp.com/getMateria';
+
+
+
+function cargar_docentes(){
+	fetch(url_docentes)
+    .then(res => res.json())
+    .then((datos) => {
+       console.log(datos);
+       cont =0;
+       tabla_docentes.innerHTML='';
+		for(let valor of datos){
+			console.log(valor.nombre);
+			cont = cont+1;
+			tabla_docentes.innerHTML += `
+            <tr>
+                <th scope="row">`+ cont +` </th>
+                <td>${valor.cedula}</td>
+                <td>${valor.nombre}</td>
+                <td>${valor.apellido}</td>
+                <td>${valor.correoUTPL}</td>
+                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.cedula}', '${valor.nombre}', '${valor.apellido}, '${valor.correoUTPL}')" >Editar</button></td>
+                <td>
+                <form action="/eliminarUsuario" method="POST">
+                    <input type="text" name="id" class="form-control" value="${valor.cedula}" style="display: none;">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+                </td>
+            </tr>
+            `
+		}
+    }).catch(err => console.error(err));
+}
 
 
 function cargar_carreras(){
@@ -102,7 +135,9 @@ function cargar_materias(){
 
 
 $(document).ready(function(){
-    //alert('jajaja');
+    
+	tabla_docentes = document.getElementById("tabla_docente");
+    cargar_docentes();
     tabla_carreras = document.getElementById("tabla_carrera");
     cargar_carreras();
     tabla_personas = document.getElementById("tabla_persona");

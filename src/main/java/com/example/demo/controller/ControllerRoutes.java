@@ -21,6 +21,13 @@ public class ControllerRoutes {
 	
 	FirebaseService fireBaseService;
 	
+	@RequestMapping("/docente")
+	public String docente(Model model) {
+		String vista="docente";
+	
+		return vista;
+	}
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		String vista="login";

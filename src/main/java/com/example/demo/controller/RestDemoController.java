@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.objects.Area;
 import com.example.demo.objects.Carrera;
+import com.example.demo.objects.Docente;
 import com.example.demo.objects.BancoP;
 import com.example.demo.objects.Materia;
 import com.example.demo.objects.Person;
@@ -28,7 +29,27 @@ public class RestDemoController {
 	
 	@Autowired
 	FirebaseService fireBaseService;
-	
+	//CRUD DOCENTE
+		@PostMapping("/createDocente")
+		public String postExample(@RequestBody Docente docente) throws InterruptedException, ExecutionException {
+			return fireBaseService.saveDocente(docente);
+		}
+		
+		@GetMapping("/getDocente")
+		public List<Docente>getDocente() throws InterruptedException, ExecutionException {
+			return fireBaseService.getDocente();
+		}
+		
+		@PutMapping("/updateDocente")
+		public String putDocente(@RequestBody Docente docente) throws InterruptedException, ExecutionException {
+			return fireBaseService.updateDocente(docente);
+		}
+		
+		@DeleteMapping("/deleteDocente")
+		public String deleteDocente(@RequestHeader String id) {
+			return fireBaseService.deleteDocente(id);
+		}
+		
 	
 	//CRUD USUAIO O PERSON
 	@PostMapping("/createUser")
