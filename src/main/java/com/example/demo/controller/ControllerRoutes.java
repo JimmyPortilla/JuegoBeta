@@ -23,14 +23,14 @@ public class ControllerRoutes {
 	FirebaseService fireBaseService;
 	Docente sesion = null;
 	
-	@RequestMapping("/login")
+	@RequestMapping("/")
 	public String login(Model model) {
 		String vista="login";
 	
 		return vista;
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String index(Model model) {
 		String vista="index";
 	
