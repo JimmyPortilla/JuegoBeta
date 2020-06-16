@@ -34,11 +34,11 @@ public class FirebaseService {
 	
 	
 /////VALIDAR LOGIN DOCENTE
-	public Docente validarLogin(String correoUTPL, String clave) throws Exception {
+	public Docente validarLogin(String correo, String clave) throws Exception {
 		Docente docente= null;
 		
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		DocumentReference docRef = dbFirestore.collection("docente").document(correoUTPL);
+		DocumentReference docRef = dbFirestore.collection("docente").document(correo);
 		// asynchronously retrieve the document
 		ApiFuture<DocumentSnapshot> future = docRef.get();
 		// ...
@@ -47,7 +47,7 @@ public class FirebaseService {
 
 		if (document.exists()) {
 			docente= document.toObject(Docente.class);
-			if(clave.equals(Desencriptar(docente.getClave()))) {
+			if(clave.equals(docente.getClave())) {
 				System.out.println("Todo correcto");
 				return docente;
 			}else {
@@ -63,36 +63,11 @@ public class FirebaseService {
 	}
 	
 	
-	public static String Desencriptar(String textoEncriptado) throws Exception {
-
-        String secretKey = "qualityinfosolutions"; //llave para encriptar datos
-        String base64EncryptedString = "";
-
-        try {
-            byte[] message = com.google.api.client.util.Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
-            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-
-            Cipher decipher = Cipher.getInstance("DESede");
-            decipher.init(Cipher.DECRYPT_MODE, key);
-
-            byte[] plainText = decipher.doFinal(message);
-
-            base64EncryptedString = new String(plainText, "UTF-8");
-
-        } catch (Exception ex) {
-        }
-        return base64EncryptedString;
-    }
-	
-	
 /////SERVICE DOCENTE
 	
 	public String saveDocente(Docente docente) throws InterruptedException, ExecutionException {	
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("docente").document(docente.getCedula()).set(docente);
+		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("docente").document(docente.getCorreoUTPL()).set(docente);
 		return collectionsApiFuture.get().getUpdateTime().toString();
 	}
 	

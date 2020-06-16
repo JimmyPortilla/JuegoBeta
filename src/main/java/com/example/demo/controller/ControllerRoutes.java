@@ -55,10 +55,10 @@ public class ControllerRoutes {
 	
 ///////INICIO DE DOCENTE
 	@PostMapping("/ingresar")
-	public String ingresar(@RequestParam(name="correoUTPL", required=false) String correoUTPL, 
+	public String ingresar(@RequestParam(name="correo", required=false) String correo, 
 			@RequestParam(name="clave", required=false) String clave) throws Exception {
 		String vista="";
-		sesion = fireBaseService.validarLogin(correoUTPL, clave);
+		sesion = fireBaseService.validarLogin(correo, clave);
 		if(sesion !=null){
 			
 			//model.addAttribute("sesionActual", sesion);
