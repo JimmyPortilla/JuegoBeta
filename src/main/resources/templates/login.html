@@ -31,6 +31,14 @@
 								<a href="#" class="active" id="register-form-link">Regístrate ahora</a>
 							</div>
 						</div>
+						
+						<div id="datos" th:if = "${datos_incorrectos}"> 
+			        		<p>Los datos que ha ingresado son incorrectos</p>
+			       		</div>
+			       		
+			       		
+			
+			       		
 						<hr>
 
                         <form id="login-form" action="/ingresar" method="POST" class="login-form">
@@ -48,7 +56,7 @@
                                     <input type="checkbox" class="form-check-input">
                                     <small>Remember Me</small>
                                 </label>
-                                
+                                <input required type="submit" id="btnIngresar" value="Ingresar" class="btn btn-info" style="width: 100%;">
                                 <button  id="btnRegistrar" class="btn btn-primary float-right" type="submit">Submit</button>
                             </div> 
                         </form>

@@ -55,22 +55,22 @@ public class ControllerRoutes {
 	
 ///////INICIO DE DOCENTE
 	@PostMapping("/ingresar")
-	public String ingresar(@RequestParam(name="correo", required=false) String correo, 
-			@RequestParam(name="clave", required=false) String clave,
-    		Model model) throws Exception {
+	public String ingresar(@RequestParam(name="correoUTPL", required=false) String correoUTPL, 
+			@RequestParam(name="clave", required=false) String clave) throws Exception {
 		String vista="";
-		sesion = fireBaseService.validarLogin(correo, clave);
+		sesion = fireBaseService.validarLogin(correoUTPL, clave);
 		if(sesion !=null){
-			model.addAttribute("sesionActual", sesion);
+			
+			//model.addAttribute("sesionActual", sesion);
 			vista="docente";
 		}else {
-			model.addAttribute("datos_incorrectos", true);
+			//model.addAttribute("datos_incorrectos", true);
 			vista="login";
 		}
 		return vista;
 	 }
 	
-///////////////CRUD DOCENTES RUTAS	
+///////////////CRUD DOCENTE RUTAS	
 	@RequestMapping("/docente")
 	public String docente(Model model) {
 		String vista="docente";
