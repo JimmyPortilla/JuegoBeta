@@ -5,17 +5,19 @@ public class Docente {
 	private String cedula;
 	private String nombre;
 	private String apellido;
+	private String clave;
 	private String correoUTPL;
 	
 	public Docente() {
 		super();
 	}
 
-	public Docente(String cedula, String nombre, String apellido, String correoUTPL) {
+	public Docente(String cedula, String nombre, String apellido, String clave, String correoUTPL) {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.clave = clave;
 		this.correoUTPL = correoUTPL;
 	}
 
@@ -43,6 +45,14 @@ public class Docente {
 		this.apellido = apellido;
 	}
 
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
 	public String getCorreoUTPL() {
 		return correoUTPL;
 	}
@@ -50,6 +60,8 @@ public class Docente {
 	public void setCorreoUTPL(String correoUTPL) {
 		this.correoUTPL = correoUTPL;
 	}
+	
+	
 	
 
 }

@@ -1,8 +1,14 @@
 package com.example.demo.service;
 
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.stereotype.Service;
 
@@ -13,6 +19,7 @@ import com.example.demo.objects.BancoP;
 import com.example.demo.objects.Materia;
 import com.example.demo.objects.Person;
 import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
@@ -23,6 +30,63 @@ import com.google.firebase.cloud.FirestoreClient;
 
 @Service
 public class FirebaseService {
+	
+	
+	
+/////VALIDAR LOGIN DOCENTE
+	public Docente validarLogin(String correo, String clave) throws Exception {
+		Docente docente= null;
+		
+		Firestore dbFirestore = FirestoreClient.getFirestore();
+		DocumentReference docRef = dbFirestore.collection("docente").document(correo);
+		// asynchronously retrieve the document
+		ApiFuture<DocumentSnapshot> future = docRef.get();
+		// ...
+		// future.get() blocks on response
+		DocumentSnapshot document = future.get();
+
+		if (document.exists()) {
+			docente= document.toObject(Docente.class);
+			if(clave.equals(Desencriptar(docente.getClave()))) {
+				System.out.println("Todo correcto");
+				return docente;
+			}else {
+				System.out.println("Contraseña incorrecta");
+				docente = null;
+			}
+		} else {
+			System.out.println("No existe usuario");
+			docente = null;
+		}
+		
+		return docente;
+	}
+	
+	
+	public static String Desencriptar(String textoEncriptado) throws Exception {
+
+        String secretKey = "qualityinfosolutions"; //llave para encriptar datos
+        String base64EncryptedString = "";
+
+        try {
+            byte[] message = com.google.api.client.util.Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+
+            Cipher decipher = Cipher.getInstance("DESede");
+            decipher.init(Cipher.DECRYPT_MODE, key);
+
+            byte[] plainText = decipher.doFinal(message);
+
+            base64EncryptedString = new String(plainText, "UTF-8");
+
+        } catch (Exception ex) {
+        }
+        return base64EncryptedString;
+    }
+	
 	
 /////SERVICE DOCENTE
 	

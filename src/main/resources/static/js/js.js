@@ -26,8 +26,9 @@ function cargar_docentes(){
                 <td>${valor.cedula}</td>
                 <td>${valor.nombre}</td>
                 <td>${valor.apellido}</td>
+                <td>${valor.clave}</td>
                 <td>${valor.correoUTPL}</td>
-                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.cedula}', '${valor.nombre}', '${valor.apellido}, '${valor.correoUTPL}')" >Editar</button></td>
+                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.cedula}', '${valor.nombre}', '${valor.apellido}', '${valor.clave}', '${valor.correoUTPL}')" >Editar</button></td>
                 <td>
                 <form action="/eliminarUsuario" method="POST">
                     <input type="text" name="id" class="form-control" value="${valor.cedula}" style="display: none;">
@@ -133,7 +134,6 @@ function cargar_materias(){
 
 
 
-
 $(document).ready(function(){
     
 	tabla_docentes = document.getElementById("tabla_docente");
@@ -158,6 +158,13 @@ function limpiar_camposNotificacion(){
     document.getElementById("cdCarrera").value = "";
     document.getElementById("nombreM").value = "";
 }
+function limpiar_camposDocente(){
+    document.getElementById("cedula").value = "";
+    document.getElementById("nombre").value = "";
+    document.getElementById("apellido").value = "";
+    ocument.getElementById("clave").value = "";
+    ocument.getElementById("correoUTPL").value = "";
+}
 
 function editarMateria(idCarrera, codigoMateria, nombre){
 	$('#modal_Materia').modal('show');
@@ -177,4 +184,9 @@ function nuevoNotificacion(){
     var boton = document.getElementById("btnRegistrar");
     document.getElementById ( "cdCarrera" ) .disabled = true;
     boton.innerHTML= 'Registrar';
+}
+
+function nuevoDocente() {
+	limpiar_camposDocente();
+	var boton = document.getElementById("btnRegistrar");
 }
