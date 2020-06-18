@@ -181,6 +181,7 @@ function limpiar_camposNotificacion(){
     document.getElementById("cdCarrera").value = "";
     document.getElementById("nombreM").value = "";
 }
+
 function limpiar_camposDocente(){
     document.getElementById("cedula").value = "";
     document.getElementById("nombre").value = "";

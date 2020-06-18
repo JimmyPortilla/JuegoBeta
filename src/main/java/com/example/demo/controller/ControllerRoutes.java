@@ -94,9 +94,11 @@ public class ControllerRoutes {
 	@PostMapping("/updateDocente")
 	public String updateDocente(@RequestParam(name="cedula") String cedula, 
 			@RequestParam(name="nombre") String nombre,
-			@RequestParam(name="apellido") String apellido,@RequestParam(name="clave") String clave,@RequestParam(name="correoUTPL") String correoUTPL) throws InterruptedException, ExecutionException {
+			@RequestParam(name="apellido") String apellido,
+			@RequestParam(name="clave") String clave,
+			@RequestParam(name="correo") String correo) throws InterruptedException, ExecutionException {
 		String vista ="docente";
-		Docente objDocente = new Docente(cedula, nombre, apellido, clave,correoUTPL);
+		Docente objDocente = new Docente(cedula, nombre, apellido, clave,correo);
 		fireBaseService.saveDocente(objDocente);
 		return vista;
 	}
