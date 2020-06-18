@@ -84,10 +84,10 @@ public class ControllerRoutes {
 	@PostMapping("/docente")
 	public String postDocente(@RequestParam(name="cedula") String cedula, 
 			@RequestParam(name="nombre") String nombre,
-			@RequestParam(name="apellido") String apellido,@RequestParam(name="clave") String clave,@RequestParam(name="correo") String correo) throws InterruptedException, ExecutionException {
+			@RequestParam(name="apellido") String apellido,@RequestParam(name="clave") String clave,@RequestParam(name="correoUTPL") String correoUTPL) throws InterruptedException, ExecutionException {
 		String vista ="login";
-		Docente objDocente = new Docente(cedula, nombre, apellido,clave,correo);
-		fireBaseService.saveDocente(objDocente);
+		Docente docente = new Docente(cedula, nombre, apellido,clave,correoUTPL);
+		fireBaseService.saveDocente(docente);
 		return vista;
 	}
 	
@@ -96,10 +96,10 @@ public class ControllerRoutes {
 			@RequestParam(name="nombre") String nombre,
 			@RequestParam(name="apellido") String apellido,
 			@RequestParam(name="clave") String clave,
-			@RequestParam(name="correo") String correo) throws InterruptedException, ExecutionException {
+			@RequestParam(name="correoUTPL") String correoUTPL) throws InterruptedException, ExecutionException {
 		String vista ="docente";
-		Docente objDocente = new Docente(cedula, nombre, apellido, clave,correo);
-		fireBaseService.saveDocente(objDocente);
+		Docente docente = new Docente(cedula, nombre, apellido, clave,correoUTPL);
+		fireBaseService.saveDocente(docente);
 		return vista;
 	}
 	

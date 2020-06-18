@@ -34,11 +34,11 @@ public class FirebaseService {
 	
 	
 /////VALIDAR LOGIN DOCENTE
-	public Docente validarLogin(String correo, String clave) throws Exception {
+	public Docente validarLogin(String correoUTPL, String clave) throws Exception {
 		Docente docente= null;
 		
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		DocumentReference docRef = dbFirestore.collection("docente").document(correo);
+		DocumentReference docRef = dbFirestore.collection("docente").document(correoUTPL);
 		// asynchronously retrieve the document
 		ApiFuture<DocumentSnapshot> future = docRef.get();
 		// ...
