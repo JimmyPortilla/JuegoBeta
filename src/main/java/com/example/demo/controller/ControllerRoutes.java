@@ -86,7 +86,7 @@ public class ControllerRoutes {
 	public String postDocente(@RequestParam(name="cedula") String cedula, 
 			@RequestParam(name="nombre") String nombre,
 			@RequestParam(name="apellido") String apellido,@RequestParam(name="clave") String clave,@RequestParam(name="correoUTPL") String correoUTPL) throws InterruptedException, ExecutionException {
-		String vista ="docente";
+		String vista ="login";
 		Docente docente = new Docente(cedula, nombre, apellido,clave,correoUTPL);
 		fireBaseService.saveDocente(docente);
 		return vista;
