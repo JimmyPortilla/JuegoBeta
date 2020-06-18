@@ -56,10 +56,10 @@ public class ControllerRoutes {
 	
 ///////INICIO DE DOCENTE
 	@PostMapping("/ingresar")
-	public String ingresar(@RequestParam(name="correo", required=false) String correo, 
+	public String ingresar(@RequestParam(name="correoUTPL", required=false) String correoUTPL, 
 			@RequestParam(name="clave", required=false) String clave,Model model) throws Exception {
 		String vista="";
-		sesion = fireBaseService.validarLogin(correo, clave);
+		sesion = fireBaseService.validarLogin(correoUTPL, clave);
 		
 		if(sesion !=null){
 			
@@ -74,6 +74,7 @@ public class ControllerRoutes {
 	 }
 	
 ///////////////CRUD DOCENTE RUTAS	
+	
 	@RequestMapping("/docente")
 	public String docente(Model model) {
 		String vista="docente";
@@ -85,7 +86,7 @@ public class ControllerRoutes {
 	public String postDocente(@RequestParam(name="cedula") String cedula, 
 			@RequestParam(name="nombre") String nombre,
 			@RequestParam(name="apellido") String apellido,@RequestParam(name="clave") String clave,@RequestParam(name="correoUTPL") String correoUTPL) throws InterruptedException, ExecutionException {
-		String vista ="login";
+		String vista ="docente";
 		Docente docente = new Docente(cedula, nombre, apellido,clave,correoUTPL);
 		fireBaseService.saveDocente(docente);
 		return vista;

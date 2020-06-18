@@ -47,7 +47,7 @@ function nuevoDocente() {
 }
 
 function modalDocente(){
-	 limpiar_camposNotificacion();
+	 limpiar_camposDocente();
 	    $('#modal_Docente').modal('show');
 }
 function editarDocente(cedula, nombre, apellido,clave,correoUTPL){
@@ -58,7 +58,7 @@ function editarDocente(cedula, nombre, apellido,clave,correoUTPL){
    document.getElementById("clave").value = clave;
    document.getElementById("correoUTPL").value = correoUTPL;
    var boton = document.getElementById("btnRegistrar");
-   document.getElementById ( "cedula" ) .disabled = true;
+   //document.getElementById ( "cedula" ) .disabled = true;
    boton.innerHTML= 'Actualizar';
 }
 
