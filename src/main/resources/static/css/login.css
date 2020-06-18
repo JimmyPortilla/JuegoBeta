@@ -22,10 +22,14 @@
 }
 
 .col-md-6 a.active {
-    background-color: #4CAF50;
+    background-color: #004170;
     color: white;
     text-decoration: none;
   }
   
-  
+#btnIngresar{
+    width: 100%;
+    background-color: #004170;
+}
+
 

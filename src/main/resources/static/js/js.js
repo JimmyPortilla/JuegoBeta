@@ -28,10 +28,10 @@ function cargar_docentes(){
                 <td>${valor.apellido}</td>
                 <td>${valor.clave}</td>
                 <td>${valor.correoUTPL}</td>
-                <td><button class="btn btn-warning" onclick="editarDocente('${valor.cedula}', '${valor.nombre}', '${valor.apellido}', '${valor.clave}', '${valor.correoUTPL}')" >Editar</button></td>
+                <td><button class="btn btn-warning" onclick="editarDocente('${valor.cedula}', '${valor.nombre}', '${valor.apellido}', '${valor.clave}', '${valor.correo}')" >Editar</button></td>
                 <td>
                 <form action="/deleteDocente" method="POST">
-                    <input type="text" name="id" class="form-control" value="${valor.cedula}" style="display: none;">
+                    <input type="text" name="id" class="form-control" value="${valor.correo}" style="display: none;">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
                 </td>
@@ -39,6 +39,11 @@ function cargar_docentes(){
             `
 		}
     }).catch(err => console.error(err));
+}
+
+function nuevoDocente() {
+	limpiar_camposDocente();
+	var boton = document.getElementById("btnRegistrar");
 }
 
 function modalDocente(){
@@ -204,7 +209,3 @@ function nuevoNotificacion(){
     boton.innerHTML= 'Registrar';
 }
 
-function nuevoDocente() {
-	limpiar_camposDocente();
-	var boton = document.getElementById("btnRegistrar");
-}
