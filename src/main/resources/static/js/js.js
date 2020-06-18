@@ -8,7 +8,7 @@ const url_personas= 'https://spring-boot-juegobeta.herokuapp.com/getPerson';
 const url_carreras= 'https://spring-boot-juegobeta.herokuapp.com/getCarrera';
 const url_materias= 'https://spring-boot-juegobeta.herokuapp.com/getMateria';
 
-
+///////FUNCIONES DOCENTES
 
 function cargar_docentes(){
 	fetch(url_docentes)
@@ -28,9 +28,9 @@ function cargar_docentes(){
                 <td>${valor.apellido}</td>
                 <td>${valor.clave}</td>
                 <td>${valor.correoUTPL}</td>
-                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.cedula}', '${valor.nombre}', '${valor.apellido}', '${valor.clave}', '${valor.correoUTPL}')" >Editar</button></td>
+                <td><button class="btn btn-warning" onclick="editarDocente('${valor.cedula}', '${valor.nombre}', '${valor.apellido}', '${valor.clave}', '${valor.correoUTPL}')" >Editar</button></td>
                 <td>
-                <form action="/eliminarUsuario" method="POST">
+                <form action="/deleteDocente" method="POST">
                     <input type="text" name="id" class="form-control" value="${valor.cedula}" style="display: none;">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
@@ -41,7 +41,23 @@ function cargar_docentes(){
     }).catch(err => console.error(err));
 }
 
+function modalDocente(){
+	 limpiar_camposNotificacion();
+	    $('#modal_Docente').modal('show');
+}
+function editarDocente(cedula, nombre, apellido,clave,correoUTPL){
+	$('#modal_Docente').modal('show');
+	document.getElementById("cedula").value = cedula;
+   document.getElementById("nombre").value = nombre;
+   document.getElementById("apellido").value = apellido;
+   document.getElementById("clave").value = clave;
+   document.getElementById("correoUTPL").value = correoUTPL;
+   var boton = document.getElementById("btnRegistrar");
+   document.getElementById ( "cedula" ) .disabled = true;
+   boton.innerHTML= 'Actualizar';
+}
 
+////////FUNCIONES CARRERA
 function cargar_carreras(){
 	fetch(url_carreras)
     .then(res => res.json())
@@ -152,6 +168,8 @@ function abrirModalMateria(){
     limpiar_camposNotificacion();
     $('#modal_Materia').modal('show');
 }
+
+
 
 function limpiar_camposNotificacion(){
     document.getElementById("cdMateria").value = "";

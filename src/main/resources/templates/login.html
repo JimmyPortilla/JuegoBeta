@@ -24,31 +24,36 @@
                         <br>
                         <hr>
                         <div class="row">
-							<div class="col-md-6">
-								<a href="#" class="active" id="login-form-link">Iniciar sesión</a>
-							</div>
-							<div class="col-md-6">
-								<a href="#" class="active" id="register-form-link">Regístrate ahora</a>
-							</div>
-						</div>
-						
-						<div id="datos" th:if = "${datos_incorrectos}"> 
-			        		<p>Los datos que ha ingresado son incorrectos</p>
-			       		</div>
-			       		
-			       		
-			
-			       		
-						<hr>
+                            <div class="col-md-6">
+                                <a href="#" class="active" id="login-form-link">Iniciar sesión</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#" class="active" id="register-form-link">Regístrate ahora</a>
+                            </div>
+                        </div>
+
+
+
+                        <div id="datos" th:if="${datos_incorrectos}">
+                            <hr>
+                            <p>Los datos que ha ingresado son incorrectos</p>
+                            
+                            <hr>
+
+                        </div>
+
+
 
                         <form id="login-form" action="/ingresar" method="POST" class="login-form">
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-                                 <input required   name="correo" id="correo" type="email" class="form-control" placeholder="" >
+                                <input required name="correo" id="correo" type="email" class="form-control"
+                                    placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1" class="text-uppercase">Password</label>
-                                <input required   name="clave" id="clave" type="password" class="form-control" placeholder="">
+                                <input required name="clave" id="clave" type="password" class="form-control"
+                                    placeholder="">
                             </div>
 
                             <div class="form-check">
@@ -56,43 +61,50 @@
                                     <input type="checkbox" class="form-check-input">
                                     <small>Remember Me</small>
                                 </label>
-                                <input required type="submit" id="btnIngresar" value="Ingresar" class="btn btn-info" style="width: 100%;">
-                                <button  id="btnRegistrar" class="btn btn-primary float-right" type="submit">Submit</button>
-                            </div> 
+                                <input required type="submit" id="btnIngresar" value="Ingresar" class="btn btn-info"
+                                    style="width: 100%;">
+                                <button id="btnRegistrar" class="btn btn-primary float-right" 
+                                    type="submit">Submit</button>
+                            </div>
                         </form>
 
 
 
-                        <form id="register-form" class="register-form" action="/docente" method="POST"  style="display: none;">
-                            
+                        <form id="register-form" class="register-form" action="/docente" method="POST"
+                            style="display: none;">
+
                             <div class="form-group">
-                                <input name="cedula" type="text" id="cedula" class="form-control" placeholder="Cedula" >
-                               
+                                <input name="cedula" type="text" id="cedula" class="form-control" placeholder="Cedula">
+
                             </div>
                             <div class="form-group">
-                                <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre" >
-                               
-                            </div>
-                            
-                             <div class="form-group">
-                                <input name="apellido" type="text" id="apellido" class="form-control" placeholder="Apellido" >
-                               
+                                <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Nombre">
+
                             </div>
 
                             <div class="form-group">
-                                <input name="correo" id="correoUTPL" type="email" class="form-control" placeholder="Correo electronico" >
-                                
+                                <input name="apellido" type="text" id="apellido" class="form-control"
+                                    placeholder="Apellido">
+
                             </div>
 
                             <div class="form-group">
-                                <input name="clave" id="clave" type="password" class="form-control" placeholder="Contraseña">
+                                <input name="correo" id="correoUTPL" type="email" class="form-control"
+                                    placeholder="Correo electronico">
+
                             </div>
-                            
+
+                            <div class="form-group">
+                                <input name="clave" id="clave" type="password" class="form-control"
+                                    placeholder="Contraseña">
+                            </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-12">
-                                    	
-                                        <button id="btnRegistrar" class="btn btn-primary float-right" type="submit">Submit</button>
+
+                                        <button id="btnRegistrar" class="btn btn-primary float-right"
+                                            type="submit">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +122,7 @@
 
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>

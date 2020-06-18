@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.sql.Time;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,17 +57,19 @@ public class ControllerRoutes {
 ///////INICIO DE DOCENTE
 	@PostMapping("/ingresar")
 	public String ingresar(@RequestParam(name="correo", required=false) String correo, 
-			@RequestParam(name="clave", required=false) String clave) throws Exception {
+			@RequestParam(name="clave", required=false) String clave,Model model) throws Exception {
 		String vista="";
 		sesion = fireBaseService.validarLogin(correo, clave);
+		
 		if(sesion !=null){
 			
-			//model.addAttribute("sesionActual", sesion);
-			vista="docente";
+			model.addAttribute("sesionActual", sesion);
+			vista="index";
 		}else {
-			//model.addAttribute("datos_incorrectos", true);
+			model.addAttribute("datos_incorrectos", true );
 			vista="login";
 		}
+		
 		return vista;
 	 }
 	
