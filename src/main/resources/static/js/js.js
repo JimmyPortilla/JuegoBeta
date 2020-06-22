@@ -3,6 +3,8 @@ var tabla_carreras;
 var tabla_personas;
 var tabla_materias;
 
+var combo_materia;
+
 const url_docentes= 'https://spring-boot-juegobeta.herokuapp.com/getDocente';
 const url_personas= 'https://spring-boot-juegobeta.herokuapp.com/getPerson';
 const url_carreras= 'https://spring-boot-juegobeta.herokuapp.com/getCarrera';
@@ -153,6 +155,15 @@ function cargar_materias(){
     }).catch(err => console.error(err));
 }
 
+db.collection("materia").onSnapshot((querySnapshot) => {
+    combo_materia.innerHTML='';
+    querySnapshot.forEach((doc) => {
+        combo_materia.innerHTML += `
+        <option>${doc.data().nombre}</option>
+        `
+    });
+});
+
 
 
 $(document).ready(function(){
@@ -165,6 +176,8 @@ $(document).ready(function(){
     cargar_personas();
     tabla_materias = document.getElementById("tabla_materia");
     cargar_materias();
+    
+    combo_materia = document.getElementById("piso"); 
     
 });
 
