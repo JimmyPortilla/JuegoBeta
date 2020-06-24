@@ -1,26 +1,50 @@
 package com.example.demo.objects;
 
-import java.util.List;
-
 public class BancoP {
 	
 	
+	private String idArea;
+	private String idCarrera;
 	private String idMateria;
-	private String titloBanco;
-
-	private List<String> lsPreguntas;
-	private List<Boolean> lsRespuestas;
+	private String docente;
+	private String pregunta;
+	private String res1;
+	private String res2;
+	private String res3;
+	private String resCorrecta;
 	
 	public BancoP() {
 		super();
 	}
 
-	public BancoP(String idMateria, String titloBanco, List<String> lsPreguntas, List<Boolean> lsRespuestas) {
+	public BancoP(String idArea, String idCarrera, String idMateria, String docente, String pregunta, String res1,
+			String res2, String res3, String resCorrecta) {
 		super();
+		this.idArea = idArea;
+		this.idCarrera = idCarrera;
 		this.idMateria = idMateria;
-		this.titloBanco = titloBanco;
-		this.lsPreguntas = lsPreguntas;
-		this.lsRespuestas = lsRespuestas;
+		this.docente = docente;
+		this.pregunta = pregunta;
+		this.res1 = res1;
+		this.res2 = res2;
+		this.res3 = res3;
+		this.resCorrecta = resCorrecta;
+	}
+
+	public String getIdArea() {
+		return idArea;
+	}
+
+	public void setIdArea(String idArea) {
+		this.idArea = idArea;
+	}
+
+	public String getIdCarrera() {
+		return idCarrera;
+	}
+
+	public void setIdCarrera(String idCarrera) {
+		this.idCarrera = idCarrera;
 	}
 
 	public String getIdMateria() {
@@ -31,28 +55,52 @@ public class BancoP {
 		this.idMateria = idMateria;
 	}
 
-	public String getTitloBanco() {
-		return titloBanco;
+	public String getDocente() {
+		return docente;
 	}
 
-	public void setTitloBanco(String titloBanco) {
-		this.titloBanco = titloBanco;
+	public void setDocente(String docente) {
+		this.docente = docente;
 	}
 
-	public List<String> getLsPreguntas() {
-		return lsPreguntas;
+	public String getPregunta() {
+		return pregunta;
 	}
 
-	public void setLsPreguntas(List<String> lsPreguntas) {
-		this.lsPreguntas = lsPreguntas;
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
 	}
 
-	public List<Boolean> getLsRespuestas() {
-		return lsRespuestas;
+	public String getRes1() {
+		return res1;
 	}
 
-	public void setLsRespuestas(List<Boolean> lsRespuestas) {
-		this.lsRespuestas = lsRespuestas;
+	public void setRes1(String res1) {
+		this.res1 = res1;
+	}
+
+	public String getRes2() {
+		return res2;
+	}
+
+	public void setRes2(String res2) {
+		this.res2 = res2;
+	}
+
+	public String getRes3() {
+		return res3;
+	}
+
+	public void setRes3(String res3) {
+		this.res3 = res3;
+	}
+
+	public String getResCorrecta() {
+		return resCorrecta;
+	}
+
+	public void setResCorrecta(String resCorrecta) {
+		this.resCorrecta = resCorrecta;
 	}
 	
 }

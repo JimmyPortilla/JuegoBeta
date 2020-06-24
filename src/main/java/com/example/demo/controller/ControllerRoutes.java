@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.sql.Time;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.objects.BancoP;
 import com.example.demo.objects.Docente;
 import com.example.demo.objects.Materia;
 import com.example.demo.service.FirebaseService;
@@ -54,7 +54,7 @@ public class ControllerRoutes {
 		return vista;
 	}
 	
-///////INICIO DE DOCENTE
+///////INICIO DE DOCENTE////////////////////////////////////////////////////////////
 	@PostMapping("/ingresar")
 	public String ingresar(@RequestParam(name="correoUTPL", required=false) String correoUTPL, 
 			@RequestParam(name="clave", required=false) String clave,Model model) throws Exception {
@@ -73,7 +73,7 @@ public class ControllerRoutes {
 		return vista;
 	 }
 	
-///////////////CRUD DOCENTE RUTAS	
+///////////////CRUD DOCENTE RUTAS///////////////////////////////////////	
 	
 	@RequestMapping("/docente")
 	public String docente(Model model) {
@@ -112,7 +112,7 @@ public class ControllerRoutes {
 		
 		return vista;
 	}
-///////////////CRUD MATERIAS RUTAS
+///////////////CRUD MATERIAS RUTAS/////////////////////////////////////////////////
 	
 	@RequestMapping("/materias")
 	public String vistaMaterias(Model model) {
@@ -149,6 +149,49 @@ public class ControllerRoutes {
 		fireBaseService.deleteMateria(id);
 		
 		return vista;
+	}
+	
+///////////////CRUD PREGUNTAS RUTAS/////////////////////////////////////////////////
+	
+	@PostMapping("/createPreguntas")
+	public String postPregunta(@RequestParam(name="area") String area, 
+		@RequestParam(name="carrera") String carrera,
+		@RequestParam(name="materia") String materia,
+		@RequestParam(name="docente") String docente,
+		@RequestParam(name="pregunta") String pregunta,
+		@RequestParam(name="res1") String res1,
+		@RequestParam(name="res2") String res2,
+		@RequestParam(name="res3") String res3,
+		@RequestParam(name="resCorrecta") String resCorrecta) throws InterruptedException, ExecutionException {
+		String vista ="index";
+		BancoP bancoP = new BancoP(area, carrera, materia,docente,pregunta,res1,res2,res3,resCorrecta);
+		fireBaseService.savePreguntas(bancoP);
+		return vista;
+	}
+	
+	@PostMapping("/updatePregunta")
+	public String updateMateria(@RequestParam(name="area") String area, 
+			@RequestParam(name="carrera") String carrera,
+			@RequestParam(name="materia") String materia,
+			@RequestParam(name="docente") String docente,
+			@RequestParam(name="pregunta") String pregunta,
+			@RequestParam(name="res1") String res1,
+			@RequestParam(name="res2") String res2,
+			@RequestParam(name="res3") String res3,
+			@RequestParam(name="resCorrecta") String resCorrecta) throws InterruptedException, ExecutionException {
+	String vista="index";
+	BancoP bancoP = new BancoP(area, carrera, materia,docente,pregunta,res1,res2,res3,resCorrecta);
+	fireBaseService.savePreguntas(bancoP);
+	return vista;
+	}
+	
+	@PostMapping("/deletePregunta")
+	public String deletePreguntas(@RequestParam(name="id", required=false) String id,
+		Model model) throws InterruptedException, ExecutionException {
+	String vista= "index";
+	fireBaseService.deletePreguntas(id);
+	
+	return vista;
 	}
 	
 	

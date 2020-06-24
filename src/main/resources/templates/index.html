@@ -1,69 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
 
     <title>Gestor de Preguntas</title>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2" style="background-color: aqua;">
+            <br>
+            <br>
+            <div class="col-md-2">
                 <div class="sidebar">
                     <a class="active" href="index">Inicio</a>
                     <a href="docente">Docente</a>
                     <a href="alumnos">Alumnos</a>
                     <a href="carreras">Carreras</a>
                     <a href="materias">Materias</a>
-                  </div>
+                </div>
             </div>
-            <div class="col-md-10" style="background-color: beige;">
+            <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="app" class="row pt-5">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Agregar Preguntas</h4>
+                        <div class="card">
+                            <div class="card-header">Header</div>
+                            <div class="card-body">
+                                <form id="formulario-preguntas" class="card-body">
+
+
+                                    <div class="form-group">
+                                        <select onchange="control()" name="area" id="area" class="form-control">
+
+                                        </select>
                                     </div>
-                  
-                                    <form id="formulario-preguntas" class="card-body">
-                
-                                        <div class="form-group">
-                                            <select name="" id=""  class="form-control">
-                                              <option selected>Materias</option>
-                                              <option>...</option>
-                                            </select>
+                                    <div class="form-group">
+                                        <select onchange="controlMateria()" name="carrera" id="carrera" class="form-control">
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <select name="materia" id="materia" class="form-control">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="pregunta" placeholder="Pregunta" class="form-control"><br>
+                                        <p>Coloque aqui las posibles respuestas y marque la correcta</p><br>
+
+                                        <div class="row ">
+                                            <div class="col-2 " >  
+                                                <input type="text" id="pregunta" placeholder="Opción 1" class="form-control">
+                                            </div>
+                                            <div class="col-1 d-flex align-items-center justify-content-start" >  
+                                                <input class="float-left" type="radio" name="optradio" checked> 
+                                            </div>   
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" id="pregunta" placeholder="Pregunta" class="form-control">
+
+                                        <div class="row ">
+                                            <div class="col-2 " >  
+                                                <input type="text" id="pregunta" placeholder="Opción 2" class="form-control">
+                                            </div>
+                                            <div class="col-1 d-flex align-items-center justify-content-start" >  
+                                                <input class="float-left" type="radio" name="optradio" checked> 
+                                            </div>   
                                         </div>
-                
-                                        <div class="form-group">
-                                            <input type="text" id="respuesta" placeholder="Respuesta" class="form-control">
+
+                                        <div class="row ">
+                                            <div class="col-2 " >  
+                                                <input type="text" id="pregunta" placeholder="Opción 3" class="form-control">
+                                            </div>
+                                            <div class="col-1 d-flex align-items-center justify-content-start" >  
+                                                <input class="float-left" type="radio" name="optradio" checked> 
+                                            </div>   
                                         </div>
-                 
-                                        <div class="form-group">
-                                            <input type="text" id="periodo" placeholder="Periodo" class="form-control">
-                                        </div>
-                  
-                                        <input type="submit" value="Guardar" class="btn btn-primary btn-block">
-                                    </form>
-                                </div>
-                            </div>    
+
+
+                                      
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+                            </div>
                         </div>
                     </div>
-                </div> 
+                    <br>
+                    <br>
+
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">Banco de Preguntas</div>
+                            <div class="card-body">
+                               <h6>Aqui tabla de preguntas</h6>
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="Guardar" class="btn ">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
             </div>
-        </div>  
+        </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
     <script src="js/js.js"></script>
 </body>
 
