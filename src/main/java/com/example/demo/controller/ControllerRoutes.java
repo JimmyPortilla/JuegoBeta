@@ -153,8 +153,8 @@ public class ControllerRoutes {
 	
 ///////////////CRUD PREGUNTAS RUTAS/////////////////////////////////////////////////
 	
-	@PostMapping("/createPreguntas")
-	public String postPregunta(@RequestParam(name="area") String area, 
+	@PostMapping("/createPregunta")
+	public String postCuestionario(@RequestParam(name="area") String area, 
 		@RequestParam(name="carrera") String carrera,
 		@RequestParam(name="materia") String materia,
 		@RequestParam(name="docente") String docente,
@@ -170,7 +170,7 @@ public class ControllerRoutes {
 	}
 	
 	@PostMapping("/updatePregunta")
-	public String updateMateria(@RequestParam(name="area") String area, 
+	public String updatePregunta(@RequestParam(name="area") String area, 
 			@RequestParam(name="carrera") String carrera,
 			@RequestParam(name="materia") String materia,
 			@RequestParam(name="docente") String docente,
