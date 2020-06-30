@@ -18,8 +18,8 @@
             <br>
             <div class="col-md-2">
                 <div class="sidebar">
-                    <a class="active" href="index">Inicio</a>
-                    <a href="preguntas">Preguntas</a>
+                    <a href="index">Inicio</a>
+                    <a class="active" href="preguntas">Preguntas</a>
                     <a href="docente">Docente</a>
                     <a href="alumnos">Alumnos</a>
                     <a href="carreras">Carreras</a>
@@ -30,10 +30,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card ">
-                            <div class="card-header " style="background-color: #FCBF00 ;">LLene el siguiente formulario</div>
+                            <div class="card-header " style="background-color: #FCBF00 ;">Filtre sus consulta</div>
                             <div class="card-body">
-
-                                <form id="formulario-preguntas" class="card-body" method="POST" action="/createPregunta">
+                                
+                                <form id="formulario-preguntas" class="card-body" >
 
                                     <div class="col-md-8">
                                         <div class="form-group">
@@ -47,76 +47,28 @@
                                             <select name="materia" id="materia" class="form-control"></select>
                                         </div>
 
-                                        <div class="form-group">
-                                            <input type="text" id="codigo" name="codigo" placeholder="Codigo"class="form-control">
-                                        </div>
                                     </div>
                          
                                     <div class="col-md-12">
                                         <div class="card ">
-                                            <div class="card-header" style="background-color: #FCBF00 ;">Lista de Preguntas</div>
+                                            <div class="card-header" style="background-color: #FCBF00 ;">Banco de Preguntas</div>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <input type="text" id="preguntaTemp1" placeholder="Ingrese la pregunta"class="form-control"><br>
-                                                            <p>Coloque aqui las posibles respuestas y marque la correcta</p><br>
-
-                                                            <div class="row ">
-                                                                    <div class="col-2 ">
-                                                                        <input type="text" id="resTemp1" placeholder="Opción 1"class="form-control">
-                                                                    </div>                                                         
-                                                            </div> <br>
-                    
-                                                            <div class="row ">
-                                                                <div class="col-2 ">
-                                                                    <input type="text" id="resTemp2" placeholder="Opción 2"
-                                                                        class="form-control">
-                                                                </div>                                       
-                                                            </div> <br>
-                    
-                                                            <div class="row ">
-                                                                <div class="col-2 ">
-                                                                    <input type="text" id="resTemp3" placeholder="Opción 3"
-                                                                        class="form-control">
-                                                                </div>                                                            
-                                                            </div><br>
-
-
-                                                            <div class="row">
-                                                                <div class="col-4">
-                                                                    <div class="form-group">
-                                                                        <label for="sel1">Seleccione la opcion correcta</label>
-                                                                        <select class="form-control" id="resCorrectTemp">
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div> <br>
-                                                   
-                                                           <a style="background-color: #004170;color: aliceblue;" class="btn btn-success" onclick="agregarPTabla()">Agregar Pregunta</a>
-                                                               
-                                                            <input type="text" id="preguntas" name="preguntas" class="form-control" style="display: none;">
-                                                            <input type="text" id="respuestas" name="respuestas" class="form-control" style="display: none;">
-                                                            <input type="text" id="resCorrecta" name="resCorrecta" class="form-control" style="display: none;">
-                    
-                    
-                                                        </div>
-
-
                                                         <div class="table-wrapper">
                                                             <table class="table table-bordered table-striped">
                                                                 <thead class="thead-dark">
                                                                     <tr>
                                                                         <th>N°</th>
+                                                                        <th>Codigo</th>
+                                                                        <th>Area</th>
+                                                                        <th>Carrera</th>
+                                                                        <th>Materia</th>
                                                                         <th>Pregunta</th>
                                                                         <th colspan="3">Respuesta</th>
-                                                                        <th>Opcion correcta</th>
-                                                                      
+                                                                        <th>Opcion correcta</th>                                                                   
                                                                     </tr>
-                                                                <tbody id="tabla_preguntas">
+                                                                <tbody id="tabla_preguntasMuestra">
                 
                                                                 </tbody>
                                                                 </thead>
@@ -129,10 +81,7 @@
                                             </div>
                                         </div>
                                     </div> 
-                                    <br>
-                                    <div class="card-footer">
-                                        <input type="submit" value="Guardar" class="btn btn-primary btn-block">
-                                    </div>
+                                    
                                 </form>
                             </div>
                             
@@ -142,12 +91,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
 
         <div class="modal fade" id="modal_Preguntas" role="dialog">
             <div class="modal-dialog">

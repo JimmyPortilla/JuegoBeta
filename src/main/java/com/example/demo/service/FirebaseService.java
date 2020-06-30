@@ -231,7 +231,7 @@ public class FirebaseService {
 				   
 				public String savePreguntas(BancoP bancop) throws InterruptedException, ExecutionException {	
 						Firestore dbFirestore = FirestoreClient.getFirestore();
-						ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("bancoP").document().set(bancop);
+						ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("bancoP").document(bancop.getCodigo()).set(bancop);
 						//return collectionsApiFuture.get().getUpdateTime().toString();
 						return "Pregunta ingresada ";
 					}				   

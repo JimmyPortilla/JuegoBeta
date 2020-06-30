@@ -2,19 +2,125 @@ var tabla_docentes;
 var tabla_carreras;
 var tabla_personas;
 var tabla_materias;
+var tabla_preguntas;
+var tabla_preguntasMuestra;
 
 
 
 var combo_materia;
 var combo_carreras;
 var combo_area;
+var conttabla=0;
 
-
+const url_preguntas = 'https://spring-boot-juegobeta.herokuapp.com/getPreguntas';
 const url_docentes = 'https://spring-boot-juegobeta.herokuapp.com/getDocente';
 const url_personas = 'https://spring-boot-juegobeta.herokuapp.com/getPerson';
 const url_carreras = 'https://spring-boot-juegobeta.herokuapp.com/getCarrera';
 const url_materias = 'https://spring-boot-juegobeta.herokuapp.com/getMateria';
 const url_areas = 'https://spring-boot-juegobeta.herokuapp.com/getArea';
+
+
+////////////////////////////FUNCIONES DOCENTES/////////////////////////////////////////////////
+
+function cargar_preguntas() {
+    fetch(url_preguntas)
+        .then(res => res.json())
+        .then((datos) => {
+            console.log(datos);
+            cont = 0;
+            tabla_preguntasMuestra.innerHTML = '';
+            for (let valor of datos) {
+                console.log(valor.nombre);
+                cont = cont + 1;
+                tabla_preguntasMuestra.innerHTML += `
+            <tr>
+                <th scope="row">` + cont + ` </th>
+                <td>${valor.codigo}</td>
+                <td>${valor.area}</td>
+                <td>${valor.carrera}</td>
+                <td>${valor.materia}</td>
+                <td>${valor.pregunta}</td>
+                <td>${valor.res1}</td>
+                <td>${valor.res2}</td>
+                <td>${valor.res3}</td>
+                <td>${valor.resCorrecta}</td>
+                <td><button class="btn btn-warning" onclick="editarPreguntas('${valor.codigo}','${valor.area}', '${valor.carrera}', '${valor.materia}', '${valor.pregunta}',
+                '${valor.res1}','${valor.res2}','${valor.res3}','${valor.resCorrecta}')" >Editar</button></td>
+                <td>
+                <form action="/deleteDocente" method="POST">
+                    <input type="text" name="id" class="form-control" value="${valor.pregunta}" style="display: none;">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+                </td>
+            </tr>
+            `
+            }
+        }).catch(err => console.error(err));
+}
+
+
+//////////////////////////////////PREGUARDADO PREGUNTAS////////////////////
+function agregarPTabla(){
+   var pregunta_actual = document.getElementById('preguntaTemp1').value;
+   var respuesta_actual = document.getElementById('resTemp1').value;
+   var respuesta_actual2 = document.getElementById('resTemp2').value;
+   var respuesta_actual3 = document.getElementById('resTemp3').value;
+   var opcion_actual = document.getElementById('resCorrectTemp').value;
+
+    
+   document.getElementById('preguntas').value = document.getElementById('preguntas').value + document.getElementById('preguntaTemp1').value +";";
+
+    document.getElementById('respuestas').value = document.getElementById('respuestas').value + document.getElementById('resTemp1').value +";"+ document.getElementById('resTemp2').value +";"+document.getElementById('resTemp3').value +";";
+
+    document.getElementById('resCorrecta').value = document.getElementById('resCorrecta').value + document.getElementById('resCorrectTemp').value+";";
+
+
+    conttabla=conttabla+1;
+    
+    tabla_preguntas.innerHTML += `
+            <tr>
+                <th scope="row">` + conttabla + ` </th>
+                <td>${pregunta_actual}</td>
+                <td>${respuesta_actual}</td>
+                <td>${respuesta_actual2}</td>               
+                <td>${respuesta_actual3}</td>
+                <td>${opcion_actual}</td>     
+            </tr>
+            `
+}
+
+function nuevaPregunta() {
+    //limpiar_camposPregunta();
+    $('#modal_Preguntas').modal('show');
+    //var boton = document.getElementById("btnRegistrar");
+}
+
+function modalPregunta() {
+    limpiar_camposPregunta();
+    $('#modal_Pregunta').modal('show');
+}
+
+
+function editarPreguntas(area, carrera, materia, docente, pregunta,res1,res2,res3,resCorrecta) {
+    $('#modal_Docente').modal('show');
+    document.getElementById("area").value = area;
+    document.getElementById("carrera").value = carrera;
+    document.getElementById("materia").value = materia;
+    document.getElementById("docente").value = docente;
+    document.getElementById("pregunta").value = pregunta;
+    document.getElementById("res1").value = res1;
+    document.getElementById("res2").value = res2;
+    document.getElementById("res3").value = res3;
+    document.getElementById("resCorrecta").value = resCorrecta;
+    var boton = document.getElementById("btnRegistrar");
+    boton.innerHTML = 'Actualizar';
+}
+
+
+
+
+
+
 
 ////////////////////////////FUNCIONES DOCENTES/////////////////////////////////////////////////
 
@@ -255,6 +361,10 @@ $(document).ready(function () {
     cargar_personas();
     tabla_materias = document.getElementById("tabla_materia");
     cargar_materias();
+    tabla_preguntasMuestra = document.getElementById("tabla_preguntasMuestra");
+    cargar_preguntas();
+
+    tabla_preguntas = document.getElementById("tabla_preguntas");
 
     cargar_areas();
 
@@ -300,7 +410,7 @@ function editarMateria(idCarrera, codigoMateria, nombre) {
 }
 
 
-function nuevoNotificacion() {
+function nuevaMateria() {
     limpiar_camposNotificacion();
     $('#modal_Materia').modal('show');
     var boton = document.getElementById("btnRegistrar");

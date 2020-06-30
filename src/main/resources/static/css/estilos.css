@@ -33,9 +33,12 @@
     color: white;
   }
 
- 
+/*CARDS*/
 .card{
   margin-top: 1em;
+}
+.card-header{
+  background-color: #FCBF00  ;
 }
 
   
