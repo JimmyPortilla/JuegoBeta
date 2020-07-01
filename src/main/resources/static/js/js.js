@@ -29,20 +29,51 @@ function cargar_preguntas() {
         .then((datos) => {
             console.log(datos);
             cont = 0;
+            contPreg= 0;
+            respuestas= 0;
             tabla_preguntasMuestra.innerHTML = '';
             for (let valor of datos) {
+                
                 //alert( valor.idMateria  +"==" +select_materia)
                 
                 if(select_materia == valor.idMateria){   
+                    contPreg =0;
+                        
                         cont = cont + 1;
                         tabla_preguntasMuestra.innerHTML += `
                     <tr>
-                        <th scope="row">` + cont + ` </th>            
-                        <td>${valor.preguntas}</td>
+                        <th scope="row">` + cont + ` </th>    
+
+                        `
+
+                        for(let pregunta of valor.preguntas){
+                            if(contPreg==0){
+                                respuestas = 0;
+                            }else{
+                                respuestas = contPreg *3;
+                            }
+                            tabla_preguntasMuestra.innerHTML += `
+                             <td>${pregunta}</td>
+
+                             <td colspan="3">${valor.respuestas[respuestas]}</td>
+                             <td >${valor.respuestas[respuestas+1]}</td>
+                             <td >${valor.respuestas[respuestas+2]}</td>
+                             
+                             <td >${valor.resCorrecta[contPreg]}</td>
+                             
+                            `
+                            contPreg = contPreg+1;
+                          
+                        }
+/*
+                        tabla_preguntasMuestra.innerHTML += `
+                      
+
                         <td >${valor.respuestas}</td>
+
                         <td >${valor.resCorrecta}</td>
                     </tr>
-                    `
+                    `*/
                 }
             }            
         }).catch(err => console.error(err));
