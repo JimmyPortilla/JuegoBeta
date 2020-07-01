@@ -33,7 +33,7 @@
                             <div class="card-header " style="background-color: #FCBF00 ;">Filtre sus consulta</div>
                             <div class="card-body">
                                 
-                                <form id="formulario-preguntas" class="card-body" >
+                                
 
                                     <div class="col-md-8">
                                         <div class="form-group">
@@ -47,42 +47,35 @@
                                             <select name="materia" id="materia" class="form-control"></select>
                                         </div>
 
-                                    </div>
-                         
-                                    <div class="col-md-12">
-                                        <div class="card ">
-                                            <div class="card-header" style="background-color: #FCBF00 ;">Banco de Preguntas</div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="table-wrapper">
-                                                            <table class="table table-bordered table-striped">
-                                                                <thead class="thead-dark">
-                                                                    <tr>
-                                                                        <th>N°</th>
-                                                                        <th>Codigo</th>
-                                                                        <th>Area</th>
-                                                                        <th>Carrera</th>
-                                                                        <th>Materia</th>
-                                                                        <th>Pregunta</th>
-                                                                        <th colspan="3">Respuesta</th>
-                                                                        <th>Opcion correcta</th>                                                                   
-                                                                    </tr>
-                                                                <tbody id="tabla_preguntasMuestra">
-                
-                                                                </tbody>
-                                                                </thead>
-                                                            </table>
-                
-                                                        </div>
-                                                    </div>
-                
-                                                </div>
-                                            </div>
+                                        <div class="col-4">
+                                            <button class="btn btn-success" onclick="consultarPreguntas()">Consultar</button>
                                         </div>
-                                    </div> 
-                                    
-                                </form>
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="table-wrapper">
+                                            <table class="table table-bordered table-striped">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>N°</th>
+                                                        <th>Pregunta</th>
+                                                        <th colspan="3">Respuesta</th>
+                                                        <th>Opcion correcta</th>                                                                   
+                                                    </tr>
+                                                <tbody id="tabla_preguntasMuestra">
+
+                                                </tbody>
+                                                </thead>
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+                                   
+                         
+                                   
+                               
                             </div>
                             
                         </div>

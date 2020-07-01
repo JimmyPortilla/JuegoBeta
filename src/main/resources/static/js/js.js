@@ -22,7 +22,8 @@ const url_areas = 'https://spring-boot-juegobeta.herokuapp.com/getArea';
 
 ////////////////////////////FUNCIONES DOCENTES/////////////////////////////////////////////////
 
-function cargar_preguntas() {
+function cargar_preguntas() {	
+    var select_materia = document.getElementById("materia").value; 
     fetch(url_preguntas)
         .then(res => res.json())
         .then((datos) => {
@@ -30,31 +31,20 @@ function cargar_preguntas() {
             cont = 0;
             tabla_preguntasMuestra.innerHTML = '';
             for (let valor of datos) {
-                console.log(valor.nombre);
-                cont = cont + 1;
-                tabla_preguntasMuestra.innerHTML += `
-            <tr>
-                <th scope="row">` + cont + ` </th>
-                <td>${valor.codigo}</td>
-                <td>${valor.area}</td>
-                <td>${valor.carrera}</td>
-                <td>${valor.materia}</td>
-                <td>${valor.pregunta}</td>
-                <td>${valor.res1}</td>
-                <td>${valor.res2}</td>
-                <td>${valor.res3}</td>
-                <td>${valor.resCorrecta}</td>
-                <td><button class="btn btn-warning" onclick="editarPreguntas('${valor.codigo}','${valor.area}', '${valor.carrera}', '${valor.materia}', '${valor.pregunta}',
-                '${valor.res1}','${valor.res2}','${valor.res3}','${valor.resCorrecta}')" >Editar</button></td>
-                <td>
-                <form action="/deleteDocente" method="POST">
-                    <input type="text" name="id" class="form-control" value="${valor.pregunta}" style="display: none;">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
-                </td>
-            </tr>
-            `
-            }
+                //alert( valor.idMateria  +"==" +select_materia)
+                
+                if(select_materia == valor.idMateria){   
+                        cont = cont + 1;
+                        tabla_preguntasMuestra.innerHTML += `
+                    <tr>
+                        <th scope="row">` + cont + ` </th>            
+                        <td>${valor.preguntas}</td>
+                        <td >${valor.respuestas}</td>
+                        <td >${valor.resCorrecta}</td>
+                    </tr>
+                    `
+                }
+            }            
         }).catch(err => console.error(err));
 }
 
@@ -245,7 +235,7 @@ function cargar_combo_materia() {
 
                 if (select_carrera == valor.idCarrera) {
                     combo_materia.innerHTML += `
-                    <option>${valor.nombre}</option>
+                    <option value="${valor.codigoMateria}">${valor.nombre}</option>
                     `
                 }
             }
@@ -348,6 +338,9 @@ function controlMateria() {
     cargar_combo_materia();
 }
 
+function consultarPreguntas(){
+    cargar_preguntas();
+}
 
 
 
@@ -362,7 +355,7 @@ $(document).ready(function () {
     tabla_materias = document.getElementById("tabla_materia");
     cargar_materias();
     tabla_preguntasMuestra = document.getElementById("tabla_preguntasMuestra");
-    cargar_preguntas();
+    //cargar_preguntas();
 
     tabla_preguntas = document.getElementById("tabla_preguntas");
 
