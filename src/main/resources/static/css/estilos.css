@@ -19,6 +19,12 @@
     color: white;
     padding: 16px;
     text-decoration: none;
+    font-weight: 900;
+  }
+
+  /*TEXTO P*/
+  p{
+    font-weight: bold;
   }
 
   /* Active/current link */
@@ -29,6 +35,10 @@
   }
 
 /*BOTON INDEX*/
+.btn{
+  font-weight: bold;
+}
+
 .btn-primary {
   background-color: #004170 !important;
 }
@@ -57,6 +67,7 @@
 }
 .card-header{
   background-color: #FCBF00  ;
+  font-weight: bold;
 }
 
   
