@@ -1,3 +1,4 @@
+
 .col-md-10,
 .col-md-2{
   width: 100%;
@@ -57,7 +58,7 @@
   /* Links on mouse-over */
   .sidebar a:hover:not(.active) {
     background-color: #FCBF00;
-    color: white;
+    color: #004170;
   }
 
 /*CARDS*/
