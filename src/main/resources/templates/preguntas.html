@@ -18,12 +18,12 @@
             <br>
             <div class="col-md-2">
                 <div class="sidebar">
-                    <a href="index">Inicio</a>
-                    <a class="active" href="preguntas">Preguntas</a>
-                    <a href="docente">Docente</a>
-                    <a href="alumnos">Alumnos</a>
-                    <a href="carreras">Carreras</a>
-                    <a href="materias">Materias</a>
+                    <a href="index"><i class="fas fa-home"></i>Inicio</a>
+                    <a class="active" href="preguntas"><i class="fas fa-list-alt"></i>Preguntas</a>
+                    <a href="docente"><i class="fas fa-chalkboard-teacher"></i>Docentes</a>
+                    <a href="alumnos"><i class="fas fa-child"></i>Alumnos</a>
+                    <a href="carreras"><i class="fas fa-edit"></i>Carreras</a>
+                    <a href="materias"><i class="far fa-file-alt"></i>Materias</a>
                 </div>
             </div>
             <div class="col-md-10">
@@ -37,30 +37,33 @@
 
                                     <div class="col-md-8">
                                         <div class="form-group">
+                                            <label for="">Area</label>
                                             <select onchange="control()" name="area" id="area" class="form-control"></select>
                                         </div>
                                         <div class="form-group">
+                                            <label for="">Carrera</label>
                                             <select onchange="controlMateria()" name="carrera" id="carrera" class="form-control"></select>
                                         </div>
     
                                         <div class="form-group">
+                                            <label for="">Materia</label>
                                             <select name="materia" id="materia" class="form-control"></select>
                                         </div>
-
-                                        <div class="col-4">
-                                            <button class="btn btn-success" onclick="consultarPreguntas()">Consultar</button>
-                                        </div>
-
                                     </div>
+
+                                    <div class="col-4">
+                                        <button style="background-color:#004170 ;" class="btn btn-success" onclick="consultarPreguntas()">Consultar</button>
+                                    </div>
+                                    <br><br>
 
                                     <div class="col-md-12">
                                         <div class="table-wrapper">
                                             <table class="table table-bordered table-striped">
-                                                <thead class="thead-dark">
-                                                    <tr>
-                                                        <th>N°</th>
-                                                        <th>Pregunta</th>
-                                                        <th >Respuestas</th>
+                                                <thead style="background-color: #FCBF00;  ">
+                                                    <tr style="text-align: center;">
+                                                        <!-- <th>N°</th> -->
+                                                        <th>Preguntas</th>
+                                                        <th colspan="3" >Respuestas</th>
                                                         <th>Opcion correcta</th>                                                                   
                                                     </tr>
                                                 <tbody id="tabla_preguntasMuestra">

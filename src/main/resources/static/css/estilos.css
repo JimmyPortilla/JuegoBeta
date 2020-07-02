@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #f1f1f1;
+    background-color: #004170;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -16,26 +16,44 @@
   /*Sidebar links */
 .sidebar a {
     display: block;
-    color: black;
+    color: white;
     padding: 16px;
     text-decoration: none;
   }
 
   /* Active/current link */
 .sidebar a.active {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #FCBF00;
+    color: #004170;
+    font-weight: bold;
   }
+
+/*BOTON INDEX*/
+.btn-primary {
+  background-color: #004170 !important;
+}
+
+  /*LABELS*/
+
+  label{
+    font-weight: bold;
+  }
+
+  /*ICONS*/
+.sidebar a i {
+    margin-right: 10px;
+}
   
   /* Links on mouse-over */
   .sidebar a:hover:not(.active) {
-    background-color: #555;
+    background-color: #FCBF00;
     color: white;
   }
 
 /*CARDS*/
 .card{
   margin-top: 1em;
+  border-color: #004170;
 }
 .card-header{
   background-color: #FCBF00  ;
