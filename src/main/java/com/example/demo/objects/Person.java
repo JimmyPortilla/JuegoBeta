@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
 
-	private String idMateria;
+	private String idCarrera;
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -14,20 +14,20 @@ public class Person {
 		super();
 	}
 
-	public Person(String idMateria, String cedula, String nombre, String apellido) {
+	public Person(String idCarrera, String cedula, String nombre, String apellido) {
 		super();
-		this.idMateria = idMateria;
+		this.idCarrera = idCarrera;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
 
-	public String getIdMateria() {
-		return idMateria;
+	public String getIdCarrera() {
+		return idCarrera;
 	}
 
-	public void setIdMateria(String idMateria) {
-		this.idMateria = idMateria;
+	public void setIdCarrera(String idCarrera) {
+		this.idCarrera = idCarrera;
 	}
 
 	public String getCedula() {
@@ -53,6 +53,7 @@ public class Person {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
 	
 	
 	
