@@ -5,21 +5,29 @@ import org.springframework.stereotype.Component;
 @Component
 public class Person {
 
+	private String idMateria;
 	private String cedula;
 	private String nombre;
 	private String apellido;
 	
-	
 	public Person() {
 		super();
 	}
-	
-	
-	public Person(String cedula, String nombre, String apellido) {
+
+	public Person(String idMateria, String cedula, String nombre, String apellido) {
 		super();
+		this.idMateria = idMateria;
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
+	}
+
+	public String getIdMateria() {
+		return idMateria;
+	}
+
+	public void setIdMateria(String idMateria) {
+		this.idMateria = idMateria;
 	}
 
 	public String getCedula() {
@@ -45,6 +53,10 @@ public class Person {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
+	
+	
+	
 	
 	
 }
