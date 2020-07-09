@@ -6,20 +6,22 @@ import org.springframework.stereotype.Component;
 public class Person {
 
 	private String idCarrera;
-	private String cedula;
 	private String nombre;
 	private String apellido;
+	private String correo;
+	private String password;
 	
 	public Person() {
 		super();
 	}
 
-	public Person(String idCarrera, String cedula, String nombre, String apellido) {
+	public Person(String idCarrera, String nombre, String apellido, String correo, String password) {
 		super();
 		this.idCarrera = idCarrera;
-		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.correo = correo;
+		this.password = password;
 	}
 
 	public String getIdCarrera() {
@@ -28,14 +30,6 @@ public class Person {
 
 	public void setIdCarrera(String idCarrera) {
 		this.idCarrera = idCarrera;
-	}
-
-	public String getCedula() {
-		return cedula;
-	}
-
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
 	}
 
 	public String getNombre() {
@@ -53,11 +47,22 @@ public class Person {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	
-	
-	
-	
-	
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 	
 }

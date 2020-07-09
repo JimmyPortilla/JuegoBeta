@@ -97,7 +97,7 @@ public class FirebaseService {
 	
 	public String saveUser(Person person) throws InterruptedException, ExecutionException {	
 		Firestore dbFirestore = FirestoreClient.getFirestore();
-		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("persons").document(person.getCedula()).set(person);
+		ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("persons").document(person.getCorreo()).set(person);
 		return collectionsApiFuture.get().getUpdateTime().toString();
 	}
 	

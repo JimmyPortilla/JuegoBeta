@@ -168,6 +168,8 @@ public class ControllerRoutes {
 		@RequestParam(name="area") String area,
 		@RequestParam(name="carrera") String carrera,
 		@RequestParam(name="materia") String materia,
+		@RequestParam(name="bimestre") String bimestre,
+		@RequestParam(name="semana") String semana,
 		@RequestParam(name="preguntas") String preguntas,
 		@RequestParam(name="respuestas") String respuestas,
 		@RequestParam(name="resCorrecta") String resCorrecta) throws InterruptedException, ExecutionException {
@@ -182,7 +184,7 @@ public class ControllerRoutes {
 		
 		
 		
-		BancoP bancoP = new BancoP(codigo, area, carrera, materia,final_preguntas, parts_respuestas, parts_resCorrecta);
+		BancoP bancoP = new BancoP(codigo, area, carrera,bimestre,semana, materia,final_preguntas, parts_respuestas, parts_resCorrecta);
 		fireBaseService.savePreguntas(bancoP);
 		return vista;
 	}

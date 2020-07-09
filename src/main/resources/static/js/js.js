@@ -20,7 +20,7 @@ const url_materias = 'https://spring-boot-juegobeta.herokuapp.com/getMateria';
 const url_areas = 'https://spring-boot-juegobeta.herokuapp.com/getArea';
 
 
-////////////////////////////FUNCIONES DOCENTES/////////////////////////////////////////////////
+////////////////////////////FUNCIONES PREGUNTAS/////////////////////////////////////////////////
 
 function cargar_preguntas() {	
     var select_materia = document.getElementById("materia").value; 
@@ -44,7 +44,8 @@ function cargar_preguntas() {
                     <tr><th scope="row" colspan="5" style="background-color: #004170; color: white; text-align: center;">` + valor.codigo + ` </th></tr>
                     <tr>
                         <!-- <th scope="row">` + cont + ` </th>    -->
-
+                            <th >${valor.bimestre} </th>
+                            <th >${valor.semana} </th>
                         `
                         for(let pregunta of valor.preguntas){
                             if(contPreg==0){
