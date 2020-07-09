@@ -76,7 +76,7 @@ function cargar_preguntas() {
 
 //////////////////////////////////PREGUARDADO PREGUNTAS////////////////////
 function agregarPTabla(){
-    limpiar_camposPreGuardado();
+    
    var pregunta_actual = document.getElementById('preguntaTemp1').value;
    var respuesta_actual = document.getElementById('resTemp1').value;
    var respuesta_actual2 = document.getElementById('resTemp2').value;
@@ -103,15 +103,15 @@ function agregarPTabla(){
                 <td>${opcion_actual}</td>     
             </tr>
             `
+            limpiar_camposPreGuardado();
 }
 
 
 function limpiar_camposPreGuardado() {
     document.getElementById("preguntaTemp1").value = "";
-    document.getElementById("Respuesta 1").value = "";
-    document.getElementById("Respuesta 2").value = "";
-    document.getElementById("Respuesta 3").value = "";
-    document.getElementById("resCorrectTemp").value = "";
+    document.getElementById("resTemp1").value = "";
+    document.getElementById("resTemp2").value = "";
+    document.getElementById("resTemp3").value = "";
 }
 
 function nuevaPregunta() {
