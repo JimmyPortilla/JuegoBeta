@@ -282,13 +282,14 @@ function cargar_personas() {
                 tabla_personas.innerHTML += `
             <tr>
                 <th scope="row">` + cont + ` </th>
-                <td>${valor.cedula}</td>
                 <td>${valor.nombre}</td>
                 <td>${valor.apellido}</td>
-                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.cedula}', '${valor.nombre}', '${valor.apellido}')" >Editar</button></td>
+                <td>${valor.correo}</td>
+                <td>${valor.password}</td>
+                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.nombre}', '${valor.apellido}','${valor.correo}','${valor.password}' )" >Editar</button></td>
                 <td>
                 <form action="/eliminarUsuario" method="POST">
-                    <input type="text" name="id" class="form-control" value="${valor.cedula}" style="display: none;">
+                    <input type="text" name="id" class="form-control" value="${valor.correo}" style="display: none;">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
                 </td>
