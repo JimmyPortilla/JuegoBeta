@@ -286,7 +286,7 @@ function cargar_personas() {
                 <td>${valor.apellido}</td>
                 <td>${valor.correo}</td>
                 <td>${valor.password}</td>
-                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.nombre}', '${valor.apellido}','${valor.correo}','${valor.password}' )" >Editar</button></td>
+                <td><button class="btn btn-warning" onclick="editarUsuario('${valor.nombre}', '${valor.apellido}', '${valor.correo}', '${valor.password}')" >Editar</button></td>
                 <td>
                 <form action="/eliminarUsuario" method="POST">
                     <input type="text" name="id" class="form-control" value="${valor.correo}" style="display: none;">
