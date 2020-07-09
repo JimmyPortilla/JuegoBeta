@@ -184,7 +184,7 @@ public class ControllerRoutes {
 		
 		
 		
-		BancoP bancoP = new BancoP(codigo, area, carrera,bimestre,semana, materia,final_preguntas, parts_respuestas, parts_resCorrecta);
+		BancoP bancoP = new BancoP(codigo, area, carrera, materia,bimestre,semana,final_preguntas, parts_respuestas, parts_resCorrecta);
 		fireBaseService.savePreguntas(bancoP);
 		return vista;
 	}
