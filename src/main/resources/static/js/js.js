@@ -82,13 +82,26 @@ function agregarPTabla(){
    var respuesta_actual2 = document.getElementById('resTemp2').value;
    var respuesta_actual3 = document.getElementById('resTemp3').value;
    var opcion_actual = document.getElementById('resCorrectTemp').value;
+   var final;
 
+   if(opcion_actual=="1"){
+       final =respuesta_actual;
+
+   }
+   if(opcion_actual=="2"){
+    final =respuesta_actual2;
+
+   }
+   if(opcion_actual=="3"){
+    final =respuesta_actual3;
+
+   }
     
    document.getElementById('preguntas').value = document.getElementById('preguntas').value + document.getElementById('preguntaTemp1').value +";";
 
     document.getElementById('respuestas').value = document.getElementById('respuestas').value + document.getElementById('resTemp1').value +";"+ document.getElementById('resTemp2').value +";"+document.getElementById('resTemp3').value +";";
 
-    document.getElementById('resCorrecta').value = document.getElementById('resCorrecta').value + document.getElementById('resCorrectTemp').value+";";
+    document.getElementById('resCorrecta').value = document.getElementById('resCorrecta').value + final+";";
 
 
     conttabla=conttabla+1;
@@ -100,7 +113,7 @@ function agregarPTabla(){
                 <td>${respuesta_actual}</td>
                 <td>${respuesta_actual2}</td>               
                 <td>${respuesta_actual3}</td>
-                <td>${opcion_actual}</td>     
+                <td>${final}</td>     
             </tr>
             `
             limpiar_camposPreGuardado();
