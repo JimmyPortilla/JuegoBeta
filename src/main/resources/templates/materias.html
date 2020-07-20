@@ -25,32 +25,34 @@
                 <section>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="table-wrapper">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h1>Lista de Materias</h1>
-                                    </div>
-                                    <br><br>
-                                    <div class="col-4">
-                                        <button class="btn btn-success" onclick="nuevaMateria()">Nueva Materia</button>
+                            <div class="card">
+                                <div class="card-header">Lista de Materias</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button class="btn" style="background-color: #004170;color:white;" onclick="nuevaMateria()">Nueva Materia</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <table class="table table-bordered table-striped">
+                                            <thead >
+                                                <tr>
+                                                    <th>N°</th>
+                                                    <th>Codigo carreras</th>
+                                                    <th>Codigo materia</th>
+                                                    <th>Nombre</th>
+                                                    <th colspan="2">Acciónes</th>  
+                                                </tr>
+                                                <tbody id="tabla_materia">
+                                                 
+                                                </tbody>
+                                            </thead>
+                                        </table>
                                     </div>
                                 </div>
-                                
-                                <table class="table table-bordered table-striped">
-                                    <thead style="background-color: #FCBF00;  ">
-                                        <tr>
-                                            <th>N°</th>
-                                            <th>Codigo carreras</th>
-                                            <th>Codigo materia</th>
-                                            <th>Nombre</th>
-                                            <th colspan="2">Acción</th>  
-                                        </tr>
-                                        <tbody id="tabla_materia">
-                                         
-                                        </tbody>
-                                    </thead>
-                                </table>
                             </div>
+                            
                         </div>
                     </div> 
                 </section>

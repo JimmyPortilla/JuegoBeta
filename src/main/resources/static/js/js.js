@@ -19,6 +19,38 @@ const url_carreras = 'https://spring-boot-juegobeta.herokuapp.com/getCarrera';
 const url_materias = 'https://spring-boot-juegobeta.herokuapp.com/getMateria';
 const url_areas = 'https://spring-boot-juegobeta.herokuapp.com/getArea';
 
+function selecBimestre(){
+    var select_bimestre = document.getElementById("bimestre").value;
+    var select_semana =document.getElementById("semana");
+
+    if (select_bimestre == "Primer Bimestre"){
+        select_semana.innerHTML = '';
+        select_semana.innerHTML += `
+        <option >Seleccione Semana</option>
+        <option value="Semana 1" >Semana 1</option>
+        <option value="Semana 2" >Semana 2</option>
+        <option value="Semana 3" >Semana 3</option>
+        <option value="Semana 4" >Semana 4</option>
+        <option value="Semana 5" >Semana 5</option>
+        <option value="Semana 6" >Semana 6</option>
+        <option value="Semana 7" >Semana 7</option>
+        <option value="Semana 8" >Semana 8</option>        
+        `
+    }else{
+        select_semana.innerHTML = '';
+        select_semana.innerHTML += `
+        <option >Seleccione semana</option>
+        <option value="Semana 9" >Semana 9</option>
+        <option value="Semana 10" >Semana 10</option>
+        <option value="Semana 11" >Semana 11</option>
+        <option value="Semana 12" >Semana 12</option>
+        <option value="Semana 13" >Semana 13</option>
+        <option value="Semana 14" >Semana 14</option>
+        <option value="Semana 15" >Semana 15</option>
+        <option value="Semana 16" >Semana 16</option>                           
+        `
+    }
+}
 
 ////////////////////////////FUNCIONES PREGUNTAS/////////////////////////////////////////////////
 
@@ -34,7 +66,7 @@ function cargar_preguntas() {
             tabla_preguntasMuestra.innerHTML = '';
             for (let valor of datos) {
                 
-                //alert( valor.idMateria  +"==" +select_materia)
+               
                 
                 if(select_materia == valor.idMateria){   
                     contPreg =0;
@@ -256,7 +288,7 @@ function cargar_combo_carreras() {
         .then((datos) => {
 
 
-            combo_carreras.innerHTML = '<option>Selecione Carrera</option>';
+            combo_carreras.innerHTML = '<option>Seleccione Carrera</option>';
             for (let valor of datos) {
 
                 if (select_area == valor.idArea) {
@@ -278,7 +310,7 @@ function cargar_combo_materia() {
         .then((datos) => {
 
 
-            combo_materia.innerHTML = '<option>Selecione Materia</option>';
+            combo_materia.innerHTML = '<option>Seleccione Materia</option>';
             for (let valor of datos) {
 
                 if (select_carrera == valor.idCarrera) {
@@ -364,7 +396,7 @@ function cargar_areas() {
         .then((datos) => {
             console.log(datos);
 
-            combo_area.innerHTML = '<option>Selecione Area</option>';
+            combo_area.innerHTML = '<option>Seleccione Area</option>';
             for (let valor of datos) {
                 console.log(valor.nombre);
 

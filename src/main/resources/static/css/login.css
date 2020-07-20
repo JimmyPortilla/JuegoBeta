@@ -18,18 +18,32 @@
     display: block;
     padding: 16px;
     text-decoration: none;
-    color: black;
+    color:#004170;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .col-md-6 a.active {
     background-color: #004170;
     color: white;
     text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
  }
   
 #btnIngresar1{
     width: 100%;
     background-color: #004170;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+h2{
+    color: #004170 ;
+    font-weight: 900;
+    font-size: 4em;
 }
 
 
