@@ -188,26 +188,35 @@ public class ControllerRoutes {
 		fireBaseService.savePreguntas(bancoP);
 		return vista;
 	}
-	/*
+	
 	@PostMapping("/updatePregunta")
-	public String updatePregunta(@RequestParam(name="area") String area, 
+	public String updatePregunta(@RequestParam(name="codigo") String codigo, 
+			@RequestParam(name="area") String area,
 			@RequestParam(name="carrera") String carrera,
 			@RequestParam(name="materia") String materia,
-			@RequestParam(name="pregunta") String pregunta,
-			@RequestParam(name="res1") String res1,
-			@RequestParam(name="res2") String res2,
-			@RequestParam(name="res3") String res3,
+			@RequestParam(name="bimestre") String bimestre,
+			@RequestParam(name="semana") String semana,
+			@RequestParam(name="preguntas") String preguntas,
+			@RequestParam(name="respuestas") String respuestas,
 			@RequestParam(name="resCorrecta") String resCorrecta) throws InterruptedException, ExecutionException {
-	String vista="index";
-	BancoP bancoP = new BancoP(area, carrera, materia,docente,pregunta,res1,res2,res3,resCorrecta);
-	fireBaseService.savePreguntas(bancoP);
-	return vista;
-	}*/
+			String vista="preguntas";
+			
+			String[] parts_preguntas = preguntas.split(";");
+			List<String> final_preguntas = new ArrayList<String>(Arrays.asList(parts_preguntas));
+		
+			List<String> parts_respuestas = Arrays.asList(respuestas.split(";"));
+			List<String> parts_resCorrecta = Arrays.asList(resCorrecta.split(";"));
+	
+	
+			BancoP bancoP = new BancoP(codigo,area,carrera,materia,bimestre,semana,final_preguntas, parts_respuestas, parts_resCorrecta);
+			fireBaseService.savePreguntas(bancoP);
+			return vista;
+	}
 	
 	@PostMapping("/deletePregunta")
 	public String deletePreguntas(@RequestParam(name="id", required=false) String id,
 		Model model) throws InterruptedException, ExecutionException {
-	String vista= "index";
+	String vista= "preguntas";
 	fireBaseService.deletePreguntas(id);
 	
 	return vista;

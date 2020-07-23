@@ -19,6 +19,9 @@ const url_carreras = 'https://spring-boot-juegobeta.herokuapp.com/getCarrera';
 const url_materias = 'https://spring-boot-juegobeta.herokuapp.com/getMateria';
 const url_areas = 'https://spring-boot-juegobeta.herokuapp.com/getArea';
 
+
+
+/////////////////////////////////////COMOBOS BIMESTRE Y SEMANA/////////////////////////////////////////////////
 function selecBimestre(){
     var select_bimestre = document.getElementById("bimestre").value;
     var select_semana =document.getElementById("semana");
@@ -73,7 +76,7 @@ function cargar_preguntas() {
                         
                         cont = cont + 1;
                         tabla_preguntasMuestra.innerHTML += `
-                    <tr><th scope="row" colspan="7" style="background-color: #004170; color: white; text-align: center;">` + valor.codigo + ` </th></tr>
+                    <tr><th scope="row" colspan="9" style="background-color: #004170; color: white; text-align: center;">` + valor.codigo + ` </th></tr>
                     <tr>
                         <!-- <th scope="row">` + cont + ` </th>    -->
                             
@@ -92,9 +95,7 @@ function cargar_preguntas() {
                              <td >${valor.respuestas[respuestas]}</td>
                              <td >${valor.respuestas[respuestas+1]}</td>
                              <td >${valor.respuestas[respuestas+2]}</td>
-                             
-                             <td >${valor.resCorrecta[contPreg]}</td>
-                            
+                             <td >${valor.resCorrecta[contPreg]}</td>         
                             `
                             contPreg = contPreg+1;                         
                         }
@@ -104,6 +105,17 @@ function cargar_preguntas() {
             }            
         }).catch(err => console.error(err));
 }
+//////////////////////////EDITAR PREGUNTAS//////////////////////////////
+/*function editarPreguntas(pregunta,res1,res2,res3,resCorrecta) {
+    $('#modal_Preguntas').modal('show');
+    document.getElementById("pregunta").value = pregunta;
+    document.getElementById("res1").value = res1;
+    document.getElementById("res2").value = res2;
+    document.getElementById("res3").value = res3;
+    document.getElementById("resCorrecta").value = resCorrecta;
+    var boton = document.getElementById("btnRegistrar");
+    boton.innerHTML = 'Actualizar';
+}*/
 
 
 //////////////////////////////////PREGUARDADO PREGUNTAS////////////////////
@@ -145,38 +157,17 @@ function agregarPTabla(){
                 <td>${respuesta_actual}</td>
                 <td>${respuesta_actual2}</td>               
                 <td>${respuesta_actual3}</td>
-                <td>${final}</td>     
+                <td>${final}</td>
+                
             </tr>
             `
             limpiar_camposPreGuardado();
 }
 
-
-function limpiar_camposPreGuardado() {
-    document.getElementById("preguntaTemp1").value = "";
-    document.getElementById("resTemp1").value = "";
-    document.getElementById("resTemp2").value = "";
-    document.getElementById("resTemp3").value = "";
-}
-
-function nuevaPregunta() {
-    //limpiar_camposPregunta();
-    $('#modal_Preguntas').modal('show');
-    //var boton = document.getElementById("btnRegistrar");
-}
-
-function modalPregunta() {
-    limpiar_camposPregunta();
-    $('#modal_Pregunta').modal('show');
-}
-
-
-function editarPreguntas(area, carrera, materia, docente, pregunta,res1,res2,res3,resCorrecta) {
-    $('#modal_Docente').modal('show');
-    document.getElementById("area").value = area;
-    document.getElementById("carrera").value = carrera;
-    document.getElementById("materia").value = materia;
-    document.getElementById("docente").value = docente;
+////////////////MODAL PREGUNTAS PREGUARDADO ////////////////////////////////////////////
+function editarPreguntaPreguardado(pregunta,res1,res2,res3,resCorrecta) {
+    alert("dfghjk");
+    $('#modal_PreguntasPreguardado').modal('show');
     document.getElementById("pregunta").value = pregunta;
     document.getElementById("res1").value = res1;
     document.getElementById("res2").value = res2;
@@ -185,6 +176,27 @@ function editarPreguntas(area, carrera, materia, docente, pregunta,res1,res2,res
     var boton = document.getElementById("btnRegistrar");
     boton.innerHTML = 'Actualizar';
 }
+
+function limpiar_camposPreGuardado() {
+    document.getElementById("preguntaTemp1").value = "";
+    document.getElementById("resTemp1").value = "";
+    document.getElementById("resTemp2").value = "";
+    document.getElementById("resTemp3").value = "";
+}
+
+/*function nuevaPregunta() {
+    //limpiar_camposPregunta();
+    $('#modal_Preguntas').modal('show');
+    //var boton = document.getElementById("btnRegistrar");
+}
+
+function modalPregunta() {
+    limpiar_camposPregunta();
+    $('#modal_Pregunta').modal('show');
+}*/
+
+
+
 
 
 
