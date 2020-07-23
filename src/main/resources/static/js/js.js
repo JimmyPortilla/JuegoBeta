@@ -408,7 +408,7 @@ function cargar_areas() {
         .then((datos) => {
             console.log(datos);
 
-            combo_area.innerHTML = '<option>Seleccione Area</option>';
+            combo_area.innerHTML = '<option>Seleccione Área</option>';
             for (let valor of datos) {
                 console.log(valor.nombre);
 
